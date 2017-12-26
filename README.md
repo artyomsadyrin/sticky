@@ -1,2 +1,2 @@
-# sticky
+# Sticky
 To-Do List App
