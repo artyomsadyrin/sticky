@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B31007A201103470083221C /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B310079201103470083221C /* AddListViewController.swift */; };
 		7BB95C32200BB31C0014DF17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB95C31200BB31C0014DF17 /* AppDelegate.swift */; };
-		7BB95C34200BB31C0014DF17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB95C33200BB31C0014DF17 /* ViewController.swift */; };
+		7BB95C34200BB31C0014DF17 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB95C33200BB31C0014DF17 /* MainViewController.swift */; };
 		7BB95C37200BB31C0014DF17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BB95C35200BB31C0014DF17 /* Main.storyboard */; };
 		7BB95C3A200BB31C0014DF17 /* sticky.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BB95C38200BB31C0014DF17 /* sticky.xcdatamodeld */; };
 		7BB95C3C200BB31C0014DF17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB95C3B200BB31C0014DF17 /* Assets.xcassets */; };
@@ -35,9 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B310079201103470083221C /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		7BB95C2E200BB31C0014DF17 /* sticky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sticky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB95C31200BB31C0014DF17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7BB95C33200BB31C0014DF17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7BB95C33200BB31C0014DF17 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7BB95C36200BB31C0014DF17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7BB95C39200BB31C0014DF17 /* sticky.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sticky.xcdatamodel; sourceTree = "<group>"; };
 		7BB95C3B200BB31C0014DF17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,12 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				7BB95C31200BB31C0014DF17 /* AppDelegate.swift */,
-				7BB95C33200BB31C0014DF17 /* ViewController.swift */,
+				7BB95C33200BB31C0014DF17 /* MainViewController.swift */,
 				7BB95C35200BB31C0014DF17 /* Main.storyboard */,
 				7BB95C3B200BB31C0014DF17 /* Assets.xcassets */,
 				7BB95C3D200BB31C0014DF17 /* LaunchScreen.storyboard */,
 				7BB95C40200BB31C0014DF17 /* Info.plist */,
 				7BB95C38200BB31C0014DF17 /* sticky.xcdatamodeld */,
+				7B310079201103470083221C /* AddListViewController.swift */,
 			);
 			path = sticky;
 			sourceTree = "<group>";
@@ -263,7 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BB95C3A200BB31C0014DF17 /* sticky.xcdatamodeld in Sources */,
-				7BB95C34200BB31C0014DF17 /* ViewController.swift in Sources */,
+				7BB95C34200BB31C0014DF17 /* MainViewController.swift in Sources */,
+				7B31007A201103470083221C /* AddListViewController.swift in Sources */,
 				7BB95C32200BB31C0014DF17 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
