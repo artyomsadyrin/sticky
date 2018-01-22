@@ -93,6 +93,7 @@
                                 <action selector="cancel:" destination="HOf-Ex-RF4" id="3sE-9r-thr"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mG8-rf-uYd"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oeq-dI-y5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -128,7 +129,7 @@
                                                     <rect key="frame" x="271" y="10" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
-                                                        <segue destination="4K4-AZ-icK" kind="show" id="S66-36-aU2"/>
+                                                        <segue destination="zmG-zc-w5g" kind="presentation" id="EKa-ad-Slw"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgK-cn-1HU">
@@ -175,11 +176,12 @@
                                 <action selector="cancel:" destination="4K4-AZ-icK" id="5Yz-Lk-bni"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6rP-8F-GEX"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FY-a4-t0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="1308"/>
+            <point key="canvasLocation" x="2623" y="1237"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3MB-Qf-eEf">
@@ -210,15 +212,34 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="4K4-AZ-icK" kind="relationship" relationship="rootViewController" id="5q7-yK-OEu"/>
+                        <segue destination="4K4-AZ-icK" kind="relationship" relationship="rootViewController" id="hyf-IA-4Ul"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DmI-Ji-3D2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="1684"/>
+            <point key="canvasLocation" x="1397" y="1869"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CuA-Ca-2WF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zmG-zc-w5g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="zCJ-zZ-miv"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bu1-Uk-USh">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4K4-AZ-icK" kind="relationship" relationship="rootViewController" id="B8r-3X-imw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOe-3y-8uy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1397" y="1170"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="S66-36-aU2"/>
+        <segue reference="B8r-3X-imw"/>
     </inferredMetricsTieBreakers>
 </document>
