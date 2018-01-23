@@ -86,6 +86,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B338F232017A2E000456F13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BB95C33200BB31C0014DF17 /* MainViewController.swift */,
+				7B310079201103470083221C /* AddListViewController.swift */,
+				7B80A06C2014DD44000208C3 /* ListViewController.swift */,
+				7B80A0702014E5CD000208C3 /* TaskViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7B338F242017A2EC00456F13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B80A06A2014D76A000208C3 /* ListTableViewCell.swift */,
+				7B80A06E2014E581000208C3 /* TaskTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7BB95C25200BB31C0014DF17 = {
 			isa = PBXGroup;
 			children = (
@@ -109,18 +129,14 @@
 		7BB95C30200BB31C0014DF17 /* sticky */ = {
 			isa = PBXGroup;
 			children = (
+				7B338F232017A2E000456F13 /* Controller */,
+				7B338F242017A2EC00456F13 /* View */,
 				7BB95C31200BB31C0014DF17 /* AppDelegate.swift */,
-				7BB95C33200BB31C0014DF17 /* MainViewController.swift */,
 				7BB95C35200BB31C0014DF17 /* Main.storyboard */,
 				7BB95C3B200BB31C0014DF17 /* Assets.xcassets */,
 				7BB95C3D200BB31C0014DF17 /* LaunchScreen.storyboard */,
 				7BB95C40200BB31C0014DF17 /* Info.plist */,
 				7BB95C38200BB31C0014DF17 /* sticky.xcdatamodeld */,
-				7B310079201103470083221C /* AddListViewController.swift */,
-				7B80A06A2014D76A000208C3 /* ListTableViewCell.swift */,
-				7B80A06C2014DD44000208C3 /* ListViewController.swift */,
-				7B80A06E2014E581000208C3 /* TaskTableViewCell.swift */,
-				7B80A0702014E5CD000208C3 /* TaskViewController.swift */,
 			);
 			path = sticky;
 			sourceTree = "<group>";
