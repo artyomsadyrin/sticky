@@ -10,7 +10,6 @@ import Foundation
 
 class Lists {
     var name: String
-    //var textColor: String
     
     init?(name: String) {
         self.name = name
