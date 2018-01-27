@@ -15,15 +15,14 @@ class MainViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         table.dataSource = self
-        //Load a test data
+
         loadLists()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     
@@ -31,14 +30,12 @@ class MainViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "ListTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ListTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ListTableViewCell.")
         }
         
-        // Fetches the appropriate meal for the data source layout.
         let list = lists[indexPath.row]
         
         cell.listName.text = list.name
