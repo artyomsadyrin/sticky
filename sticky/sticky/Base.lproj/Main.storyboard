@@ -56,7 +56,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="listName" destination="SzW-5V-xfJ" id="eAq-Di-lJx"/>
                                             <segue destination="dsN-WA-08J" kind="show" id="I6T-oL-Xiy"/>
                                         </connections>
                                     </tableViewCell>

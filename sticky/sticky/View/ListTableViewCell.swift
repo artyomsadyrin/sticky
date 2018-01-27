@@ -10,9 +10,13 @@ import Foundation
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
+<<<<<<< HEAD
     
     @IBOutlet weak var listName: UILabel!
     
+=======
+
+>>>>>>> d7f97eb758c7f23255e12898ac71857ef4edf519
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
