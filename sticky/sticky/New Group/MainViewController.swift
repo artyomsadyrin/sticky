@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Load a test data
         loadLists()
     }
 
@@ -43,7 +45,6 @@ class MainViewController: UIViewController {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -52,21 +53,19 @@ class MainViewController: UIViewController {
     }
     
     private func loadLists() {
-        
         guard let list1 = Lists(name: "Family") else {
-            fatalError("Unable to instantiate meal1")
+            fatalError("Unable to instantiate list1")
         }
         
         guard let list2 = Lists(name: "Personal") else {
-            fatalError("Unable to instantiate meal2")
+            fatalError("Unable to instantiate list2")
         }
         
         guard let list3 = Lists(name: "Work") else {
-            fatalError("Unable to instantiate meal2")
+            fatalError("Unable to instantiate list2")
         }
         
         lists += [list1, list2, list3]
-        
     }
 
 }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B31007A201103470083221C /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B310079201103470083221C /* AddListViewController.swift */; };
 		7B338F1F2017962400456F13 /* Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B338F1E2017962400456F13 /* Lists.swift */; };
-		7B338F212017968000456F13 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B338F202017968000456F13 /* Task.swift */; };
+		7B338F212017968000456F13 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B338F202017968000456F13 /* Tasks.swift */; };
 		7B80A06B2014D76A000208C3 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80A06A2014D76A000208C3 /* ListTableViewCell.swift */; };
 		7B80A06D2014DD44000208C3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80A06C2014DD44000208C3 /* ListViewController.swift */; };
 		7B80A06F2014E581000208C3 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80A06E2014E581000208C3 /* TaskTableViewCell.swift */; };
@@ -22,6 +22,10 @@
 		7BB95C3F200BB31C0014DF17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BB95C3D200BB31C0014DF17 /* LaunchScreen.storyboard */; };
 		7BB95C4A200BB31C0014DF17 /* stickyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB95C49200BB31C0014DF17 /* stickyTests.swift */; };
 		7BB95C55200BB31D0014DF17 /* stickyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB95C54200BB31D0014DF17 /* stickyUITests.swift */; };
+		7BEE6A41201C6971008C7AD1 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6A3D201C6971008C7AD1 /* Task+CoreDataClass.swift */; };
+		7BEE6A42201C6971008C7AD1 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6A3E201C6971008C7AD1 /* Task+CoreDataProperties.swift */; };
+		7BEE6A43201C6971008C7AD1 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6A3F201C6971008C7AD1 /* List+CoreDataClass.swift */; };
+		7BEE6A44201C6971008C7AD1 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE6A40201C6971008C7AD1 /* List+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +48,7 @@
 /* Begin PBXFileReference section */
 		7B310079201103470083221C /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		7B338F1E2017962400456F13 /* Lists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lists.swift; sourceTree = "<group>"; };
-		7B338F202017968000456F13 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		7B338F202017968000456F13 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		7B80A06A2014D76A000208C3 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		7B80A06C2014DD44000208C3 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		7B80A06E2014E581000208C3 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -63,6 +67,10 @@
 		7BB95C50200BB31D0014DF17 /* stickyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stickyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB95C54200BB31D0014DF17 /* stickyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stickyUITests.swift; sourceTree = "<group>"; };
 		7BB95C56200BB31D0014DF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BEE6A3D201C6971008C7AD1 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7BEE6A3E201C6971008C7AD1 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7BEE6A3F201C6971008C7AD1 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7BEE6A40201C6971008C7AD1 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				7B338F1E2017962400456F13 /* Lists.swift */,
-				7B338F202017968000456F13 /* Task.swift */,
+				7B338F202017968000456F13 /* Tasks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +151,7 @@
 		7BB95C30200BB31C0014DF17 /* sticky */ = {
 			isa = PBXGroup;
 			children = (
+				7BEE6A45201C699F008C7AD1 /* CoreData */,
 				7B338F222017994F00456F13 /* View */,
 				7B338F1A2017955200456F13 /* Model */,
 				7B338F1D2017957A00456F13 /* Controller */,
@@ -172,6 +181,17 @@
 				7BB95C56200BB31D0014DF17 /* Info.plist */,
 			);
 			path = stickyUITests;
+			sourceTree = "<group>";
+		};
+		7BEE6A45201C699F008C7AD1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7BEE6A3D201C6971008C7AD1 /* Task+CoreDataClass.swift */,
+				7BEE6A3E201C6971008C7AD1 /* Task+CoreDataProperties.swift */,
+				7BEE6A3F201C6971008C7AD1 /* List+CoreDataClass.swift */,
+				7BEE6A40201C6971008C7AD1 /* List+CoreDataProperties.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,13 +330,17 @@
 			files = (
 				7B80A06F2014E581000208C3 /* TaskTableViewCell.swift in Sources */,
 				7BB95C3A200BB31C0014DF17 /* sticky.xcdatamodeld in Sources */,
-				7B338F212017968000456F13 /* Task.swift in Sources */,
+				7BEE6A43201C6971008C7AD1 /* List+CoreDataClass.swift in Sources */,
+				7B338F212017968000456F13 /* Tasks.swift in Sources */,
 				7BB95C34200BB31C0014DF17 /* MainViewController.swift in Sources */,
+				7BEE6A44201C6971008C7AD1 /* List+CoreDataProperties.swift in Sources */,
 				7B80A06D2014DD44000208C3 /* ListViewController.swift in Sources */,
 				7B31007A201103470083221C /* AddListViewController.swift in Sources */,
 				7B80A0712014E5CD000208C3 /* TaskViewController.swift in Sources */,
 				7BB95C32200BB31C0014DF17 /* AppDelegate.swift in Sources */,
+				7BEE6A41201C6971008C7AD1 /* Task+CoreDataClass.swift in Sources */,
 				7B80A06B2014D76A000208C3 /* ListTableViewCell.swift in Sources */,
+				7BEE6A42201C6971008C7AD1 /* Task+CoreDataProperties.swift in Sources */,
 				7B338F1F2017962400456F13 /* Lists.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

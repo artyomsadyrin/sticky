@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="1856" y="457"/>
         </scene>
-        <!--List-->
+        <!--Current List-->
         <scene sceneID="zlK-s6-VfW">
             <objects>
-                <viewController title="List" id="dsN-WA-08J" customClass="ListViewController" customModule="sticky" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Current List" id="dsN-WA-08J" customClass="ListViewController" customModule="sticky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3BC-BI-JL7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,7 +149,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="a9I-5r-pmq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="List" id="67c-tu-YKG">
+                    <navigationItem key="navigationItem" title="Current List" id="67c-tu-YKG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VA4-EA-NYT">
                             <connections>
                                 <segue destination="4sW-Ax-F9P" kind="presentation" id="MGn-Xb-64p"/>
@@ -161,7 +161,7 @@
             </objects>
             <point key="canvasLocation" x="99" y="1308"/>
         </scene>
-        <!--Task-->
+        <!--Current Task-->
         <scene sceneID="1bz-3b-tiT">
             <objects>
                 <viewController id="4K4-AZ-icK" customClass="TaskViewController" customModule="sticky" customModuleProvider="target" sceneMemberID="viewController">
@@ -171,7 +171,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="OqG-Yw-JdO"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Task" id="zsg-0p-Goz">
+                    <navigationItem key="navigationItem" title="Current Task" id="zsg-0p-Goz">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tXy-Kg-IWm">
                             <connections>
                                 <action selector="cancel:" destination="4K4-AZ-icK" id="5Yz-Lk-bni"/>

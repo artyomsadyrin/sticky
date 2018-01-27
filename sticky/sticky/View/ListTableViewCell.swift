@@ -13,7 +13,6 @@ class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var listName: UILabel!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
