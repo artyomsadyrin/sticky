@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B31007A201103470083221C /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B310079201103470083221C /* AddListViewController.swift */; };
-<<<<<<< HEAD
 		7B338F1F2017962400456F13 /* Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B338F1E2017962400456F13 /* Lists.swift */; };
-=======
->>>>>>> d7f97eb758c7f23255e12898ac71857ef4edf519
 		7B80A06B2014D76A000208C3 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80A06A2014D76A000208C3 /* ListTableViewCell.swift */; };
 		7B80A06D2014DD44000208C3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80A06C2014DD44000208C3 /* ListViewController.swift */; };
 		7B80A06F2014E581000208C3 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80A06E2014E581000208C3 /* TaskTableViewCell.swift */; };
@@ -45,10 +42,7 @@
 
 /* Begin PBXFileReference section */
 		7B310079201103470083221C /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		7B338F1E2017962400456F13 /* Lists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lists.swift; sourceTree = "<group>"; };
-=======
->>>>>>> d7f97eb758c7f23255e12898ac71857ef4edf519
 		7B80A06A2014D76A000208C3 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		7B80A06C2014DD44000208C3 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		7B80A06E2014E581000208C3 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -94,7 +88,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-<<<<<<< HEAD
 		7B1ADE24201C6BA80089BDB1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,21 +100,14 @@
 			sourceTree = "<group>";
 		};
 		7B338F1A2017955200456F13 /* Model */ = {
-=======
-		7B338F232017A2E000456F13 /* Controller */ = {
->>>>>>> d7f97eb758c7f23255e12898ac71857ef4edf519
 			isa = PBXGroup;
 			children = (
 				7B338F1E2017962400456F13 /* Lists.swift */,
 			);
-<<<<<<< HEAD
 			path = Model;
-=======
-			path = Controller;
->>>>>>> d7f97eb758c7f23255e12898ac71857ef4edf519
 			sourceTree = "<group>";
 		};
-		7B338F242017A2EC00456F13 /* View */ = {
+		7B338F222017994F00456F13 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				7B80A06A2014D76A000208C3 /* ListTableViewCell.swift */,
@@ -153,14 +139,9 @@
 		7BB95C30200BB31C0014DF17 /* sticky */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				7B338F222017994F00456F13 /* View */,
 				7B338F1A2017955200456F13 /* Model */,
 				7B1ADE24201C6BA80089BDB1 /* Controller */,
-=======
-				7B338F232017A2E000456F13 /* Controller */,
-				7B338F242017A2EC00456F13 /* View */,
->>>>>>> d7f97eb758c7f23255e12898ac71857ef4edf519
 				7BB95C31200BB31C0014DF17 /* AppDelegate.swift */,
 				7BB95C35200BB31C0014DF17 /* Main.storyboard */,
 				7BB95C3B200BB31C0014DF17 /* Assets.xcassets */,
@@ -331,6 +312,7 @@
 				7B80A0712014E5CD000208C3 /* TaskViewController.swift in Sources */,
 				7BB95C32200BB31C0014DF17 /* AppDelegate.swift in Sources */,
 				7B80A06B2014D76A000208C3 /* ListTableViewCell.swift in Sources */,
+				7B338F1F2017962400456F13 /* Lists.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

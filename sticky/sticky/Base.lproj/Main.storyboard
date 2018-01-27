@@ -56,6 +56,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="listName" destination="SzW-5V-xfJ" id="eAq-Di-lJx"/>
                                             <segue destination="dsN-WA-08J" kind="show" id="I6T-oL-Xiy"/>
                                         </connections>
                                     </tableViewCell>
@@ -72,6 +73,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="PXi-Zq-pJI" id="wQV-X1-RyR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
