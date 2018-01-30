@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="List" representedClassName="List" syncable="YES" codeGenerationType="class">
+    <entity name="List" representedClassName=".List" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="textColor" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="task" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="list" inverseEntity="Task" syncable="YES"/>
     </entity>
-    <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
+    <entity name="Task" representedClassName=".Task" syncable="YES">
         <attribute name="descriptionTask" attributeType="String" syncable="YES"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
