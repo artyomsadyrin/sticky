@@ -22,6 +22,10 @@
 		7BB95C4A200BB31C0014DF17 /* stickyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB95C49200BB31C0014DF17 /* stickyTests.swift */; };
 		7BB95C55200BB31D0014DF17 /* stickyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB95C54200BB31D0014DF17 /* stickyUITests.swift */; };
 		7BDFD9F7201CB61200224735 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDFD9F6201CB61200224735 /* Tasks.swift */; };
+		7BF5DCFC2020254500DD9247 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5DCF82020254500DD9247 /* List+CoreDataClass.swift */; };
+		7BF5DCFD2020254500DD9247 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5DCF92020254500DD9247 /* List+CoreDataProperties.swift */; };
+		7BF5DCFE2020254500DD9247 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5DCFA2020254500DD9247 /* Task+CoreDataClass.swift */; };
+		7BF5DCFF2020254500DD9247 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5DCFB2020254500DD9247 /* Task+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		7BB95C54200BB31D0014DF17 /* stickyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stickyUITests.swift; sourceTree = "<group>"; };
 		7BB95C56200BB31D0014DF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BDFD9F6201CB61200224735 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		7BF5DCF82020254500DD9247 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7BF5DCF92020254500DD9247 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7BF5DCFA2020254500DD9247 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7BF5DCFB2020254500DD9247 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +150,7 @@
 		7BB95C30200BB31C0014DF17 /* sticky */ = {
 			isa = PBXGroup;
 			children = (
+				7BF5DD002020254F00DD9247 /* Data */,
 				7B338F222017994F00456F13 /* View */,
 				7B338F1A2017955200456F13 /* Model */,
 				7B1ADE24201C6BA80089BDB1 /* Controller */,
@@ -171,6 +180,17 @@
 				7BB95C56200BB31D0014DF17 /* Info.plist */,
 			);
 			path = stickyUITests;
+			sourceTree = "<group>";
+		};
+		7BF5DD002020254F00DD9247 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7BF5DCF82020254500DD9247 /* List+CoreDataClass.swift */,
+				7BF5DCF92020254500DD9247 /* List+CoreDataProperties.swift */,
+				7BF5DCFA2020254500DD9247 /* Task+CoreDataClass.swift */,
+				7BF5DCFB2020254500DD9247 /* Task+CoreDataProperties.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,10 +329,14 @@
 			files = (
 				7B80A06F2014E581000208C3 /* TaskTableViewCell.swift in Sources */,
 				7BB95C3A200BB31C0014DF17 /* sticky.xcdatamodeld in Sources */,
+				7BF5DCFE2020254500DD9247 /* Task+CoreDataClass.swift in Sources */,
 				7BB95C34200BB31C0014DF17 /* MainViewController.swift in Sources */,
+				7BF5DCFF2020254500DD9247 /* Task+CoreDataProperties.swift in Sources */,
 				7B80A06D2014DD44000208C3 /* ListViewController.swift in Sources */,
+				7BF5DCFC2020254500DD9247 /* List+CoreDataClass.swift in Sources */,
 				7B31007A201103470083221C /* AddListViewController.swift in Sources */,
 				7B80A0712014E5CD000208C3 /* TaskViewController.swift in Sources */,
+				7BF5DCFD2020254500DD9247 /* List+CoreDataProperties.swift in Sources */,
 				7BB95C32200BB31C0014DF17 /* AppDelegate.swift in Sources */,
 				7B80A06B2014D76A000208C3 /* ListTableViewCell.swift in Sources */,
 				7BDFD9F7201CB61200224735 /* Tasks.swift in Sources */,
