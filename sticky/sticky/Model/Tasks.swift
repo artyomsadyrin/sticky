@@ -2,7 +2,7 @@
 //  Tasks.swift
 //  sticky
 //
-//  Created by Artsiom Sadyryn on 1/27/18.
+//  Created by Artsiom Sadyryn on 2/11/18.
 //  Copyright © 2018 Artsiom Sadyryn. All rights reserved.
 //
 

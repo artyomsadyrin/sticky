@@ -24,7 +24,7 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
         
         table.dataSource = self
         
-        let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
+        let fetchRequest: NSFetchRequest<List> = List.fetchRequest() //получаю данные из CoreData
         do {
             let listsFetched = try PersistenceService.context.fetch(fetchRequest)
             self.lists = listsFetched
@@ -43,7 +43,7 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
     }
 
     
-    var lists = [List]()
+    var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -74,13 +74,13 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete {
+        if editingStyle == .delete { //реализую удаление листов через свайп влево
             let list = lists[indexPath.row]
             PersistenceService.context.delete(list)
 
             do {
                 try PersistenceService.context.save()
-                tableView.reloadData()
+                table.reloadData()
             }
             catch {
                 let nserror = error as NSError
@@ -89,7 +89,7 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
         }
     }
     
-    @IBAction func update() {
+    @IBAction func update(_ sender: UIBarButtonItem) {
         
         let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
         do {
@@ -104,6 +104,5 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
 
     }
     
-
 }
 

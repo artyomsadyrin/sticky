@@ -76,7 +76,7 @@
                     <navigationItem key="navigationItem" title="Main" id="A8s-Hy-vic">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="CVR-YP-laT">
                             <connections>
-                                <action selector="update" destination="BYZ-38-t0r" id="BKt-eU-CDj"/>
+                                <action selector="update:" destination="BYZ-38-t0r" id="1HD-TM-FMB"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vaB-xq-e7Y">
