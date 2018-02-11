@@ -18,7 +18,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
 
         table.dataSource = self
 
-        loadLists()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +26,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     }
 
     
-    var lists: [Lists] = []
+    var lists = [List]()
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -51,21 +51,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
         return lists.count
     }
     
-    private func loadLists() {
-        guard let list1 = Lists(name: "Family") else {
-            fatalError("Unable to instantiate list1")
-        }
-        
-        guard let list2 = Lists(name: "Personal") else {
-            fatalError("Unable to instantiate list2")
-        }
-        
-        guard let list3 = Lists(name: "Work") else {
-            fatalError("Unable to instantiate list2")
-        }
-        
-        lists += [list1, list2, list3]
-    }
+    
 
 }
 

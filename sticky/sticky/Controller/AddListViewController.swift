@@ -12,7 +12,39 @@ import UIKit
 class AddListViewController: UIViewController {
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        
+        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+        let isPresentingInAddListMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddListMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
+        
+    }
+    
+    @IBOutlet weak var listNameTextField: UITextField!
+    
+    @IBAction func saveList(_ sender: UIBarButtonItem) {
+        
+        guard let listName = listNameTextField.text, listName.count > 0 else {
+            let emptyField = UIAlertController(title: "Alert", message: "List name is empty", preferredStyle: .alert)
+            emptyField.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(emptyField, animated: true, completion: nil)
+            return
+        }
+        
+        let list = List(context: PersistenceService.context)
+        list.name = listName
+        PersistenceService.saveContext()
+        
         dismiss(animated: true, completion: nil)
     }
+    
     
 }

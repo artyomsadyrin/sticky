@@ -18,7 +18,6 @@ extension List {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var textColor: String?
     @NSManaged public var task: NSSet?
 
 }
