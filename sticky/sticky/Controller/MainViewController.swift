@@ -89,9 +89,19 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
         }
     }
     
-    @IBAction func update(_ sender: UIBarButtonItem) {
+    @IBAction func update() {
         
-        table.reloadData()
+        let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
+        do {
+            let listsFetched = try PersistenceService.context.fetch(fetchRequest)
+            self.lists = listsFetched
+            self.table.reloadData()
+        }
+        catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+
     }
     
 
