@@ -74,6 +74,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Main" id="A8s-Hy-vic">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="CVR-YP-laT">
+                            <connections>
+                                <action selector="update:" destination="BYZ-38-t0r" id="CPY-JA-Bsn"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vaB-xq-e7Y">
                             <connections>
                                 <segue destination="KOB-N0-SNm" kind="presentation" id="JZU-rU-iJE"/>

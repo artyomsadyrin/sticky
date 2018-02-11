@@ -8,15 +8,32 @@
 
 import Foundation
 import UIKit
+import CoreData
 
-class MainViewController: UIViewController, UITableViewDataSource {
-
+class MainViewController: UIViewController, UITableViewDataSource, AddListViewControllerDelegate {
+    
+    func refreshMainTable(_ newList: List) {
+        lists.append(newList)
+        table.reloadData()
+    }
+    
     @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         table.dataSource = self
+        
+        let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
+        do {
+            let listsFetched = try PersistenceService.context.fetch(fetchRequest)
+            self.lists = listsFetched
+            self.table.reloadData()
+        }
+        catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
 
         
     }
@@ -51,6 +68,31 @@ class MainViewController: UIViewController, UITableViewDataSource {
         return lists.count
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let list = lists[indexPath.row]
+            PersistenceService.context.delete(list)
+
+            do {
+                try PersistenceService.context.save()
+                tableView.reloadData()
+            }
+            catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    @IBAction func update(_ sender: UIBarButtonItem) {
+        
+        table.reloadData()
+    }
     
 
 }

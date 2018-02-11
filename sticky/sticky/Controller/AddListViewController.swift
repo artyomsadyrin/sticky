@@ -9,7 +9,15 @@
 import Foundation
 import UIKit
 
+protocol AddListViewControllerDelegate: class {
+    func refreshMainTable(_ newList: List)
+}
+
 class AddListViewController: UIViewController {
+
+    
+    @IBOutlet weak var listNameTextField: UITextField!
+    weak var delegate: AddListViewControllerDelegate?
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
@@ -28,8 +36,6 @@ class AddListViewController: UIViewController {
         
     }
     
-    @IBOutlet weak var listNameTextField: UITextField!
-    
     @IBAction func saveList(_ sender: UIBarButtonItem) {
         
         guard let listName = listNameTextField.text, listName.count > 0 else {
@@ -42,7 +48,7 @@ class AddListViewController: UIViewController {
         let list = List(context: PersistenceService.context)
         list.name = listName
         PersistenceService.saveContext()
-        
+        delegate?.refreshMainTable(list)
         dismiss(animated: true, completion: nil)
     }
     
