@@ -45,6 +45,19 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
     
     var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
     
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let cellIdentifier = "ListTableViewCell"
+        switch segue.identifier! {
+        case cellIdentifier:
+            let destination = segue.destination as! ListViewController
+            let indexPath = table.indexPathForSelectedRow!
+            let selectedObject = lists[indexPath.row]
+            destination.currentList = selectedObject
+        default:
+            print("Unknown segue: \(segue.identifier)")
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "ListTableViewCell"

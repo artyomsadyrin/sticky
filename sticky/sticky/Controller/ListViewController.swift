@@ -20,6 +20,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
     }
     
     var tasks: [Tasks] = []
+    weak var currentList: List?
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
