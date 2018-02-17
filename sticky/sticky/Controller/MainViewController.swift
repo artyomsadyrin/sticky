@@ -10,22 +10,27 @@ import Foundation
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController, UITableViewDataSource, AddListViewControllerDelegate {
-    
-    func refreshMainTable(_ newList: List) {
-        lists.append(newList)
-        listTable.reloadData()
-    }
-    
+class MainViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var listTable: UITableView!
+    var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         listTable.dataSource = self
         
-        let fetchRequest: NSFetchRequest<List> = List.fetchRequest() //получаю данные из CoreData
+        updateListTable()
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func updateListTable() {
+        
+        let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
         do {
             let listsFetched = try PersistenceService.context.fetch(fetchRequest)
             self.lists = listsFetched
@@ -35,16 +40,8 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    
-    var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -69,6 +66,10 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
         default:
             print("Unknown segue: \(segue.identifier)")
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateListTable()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,7 +107,7 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
 
             do {
                 try PersistenceService.context.save()
-                listTable.reloadData()
+                updateListTable()
             }
             catch {
                 let nserror = error as NSError
@@ -116,18 +117,7 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
     }
     
     @IBAction func update(_ sender: UIBarButtonItem) {
-        
-        let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
-        do {
-            let listsFetched = try PersistenceService.context.fetch(fetchRequest)
-            self.lists = listsFetched
-            self.listTable.reloadData()
-        }
-        catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-
+        updateListTable()
     }
     
 }

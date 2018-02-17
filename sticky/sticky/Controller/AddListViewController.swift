@@ -31,7 +31,7 @@ class AddListViewController: UIViewController {
             owningNavigationController.popViewController(animated: true)
         }
         else {
-            fatalError("The MealViewController is not inside a navigation controller.")
+            fatalError("The AddListViewController is not inside a navigation controller.")
         }
         
     }
@@ -48,7 +48,6 @@ class AddListViewController: UIViewController {
         let list = List(context: PersistenceService.context)
         list.name = listName
         PersistenceService.saveContext()
-        delegate?.refreshMainTable(list)
         dismiss(animated: true, completion: nil)
     }
     
