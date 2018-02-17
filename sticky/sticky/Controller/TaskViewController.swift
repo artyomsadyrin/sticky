@@ -58,6 +58,7 @@ class TaskViewController: UIViewController {
             task.list = currentList
             PersistenceService.saveContext()
         }
+        dismiss(animated: true, completion: nil)
     }
  
 }

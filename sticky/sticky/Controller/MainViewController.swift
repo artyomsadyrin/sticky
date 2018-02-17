@@ -69,6 +69,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateListTable()
     }
     

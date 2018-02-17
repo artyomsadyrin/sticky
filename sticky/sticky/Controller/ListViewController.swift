@@ -32,12 +32,8 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        if let list = list {
-            navigationItem.title = list.name
-            if let currentTasks = list.task {
-                tasks = Array(currentTasks) as! [Task]
-            }
-        }
+        super.viewWillAppear(animated)
+        updateTasksTable()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -46,6 +42,13 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
     }
  
+    func updateTasksTable() {
+        if let list = list {
+            if let currentTasks = list.task {
+                tasks = Array(currentTasks) as! [Task]
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -70,7 +73,26 @@ class ListViewController: UIViewController, UITableViewDataSource {
         return tasks.count
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete { //реализую удаление листов через свайп влево
+            let task = tasks[indexPath.row]
+            PersistenceService.context.delete(task)
+            
+            do {
+                try PersistenceService.context.save()
+                updateTasksTable()
+            }
+            catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
     
+    @IBAction func updateByClick(_ sender: UIBarButtonItem) {
+        updateTasksTable()
+    }
     
     
 }

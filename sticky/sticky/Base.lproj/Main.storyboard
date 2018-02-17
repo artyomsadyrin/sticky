@@ -196,7 +196,11 @@
                                     <segue destination="4sW-Ax-F9P" kind="presentation" identifier="AddTask" id="MGn-Xb-64p"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="Sal-aP-OIq"/>
+                            <barButtonItem systemItem="refresh" id="Sal-aP-OIq">
+                                <connections>
+                                    <action selector="updateByClick:" destination="dsN-WA-08J" id="AqF-BO-Pqc"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
