@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,7 +59,7 @@
                                                     <rect key="frame" x="283" y="11" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
-                                                        <segue destination="HOf-Ex-RF4" kind="show" identifier="ShowDetail" id="RNL-qN-teZ"/>
+                                                        <segue destination="HOf-Ex-RF4" kind="show" identifier="ShowListDetail" id="RNL-qN-teZ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -81,7 +83,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vaB-xq-e7Y">
                             <connections>
-                                <segue destination="KOB-N0-SNm" kind="presentation" identifier="AddItem" id="JZU-rU-iJE"/>
+                                <segue destination="KOB-N0-SNm" kind="presentation" identifier="AddList" id="JZU-rU-iJE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -165,7 +167,7 @@
                                                     <rect key="frame" x="271" y="10" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
-                                                        <segue destination="4K4-AZ-icK" kind="show" id="4lB-5e-es7"/>
+                                                        <segue destination="4K4-AZ-icK" kind="show" identifier="ShowListDetail" id="4lB-5e-es7"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgK-cn-1HU">
@@ -178,7 +180,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descriptionTask" destination="hgK-cn-1HU" id="w2K-Qi-z2b"/>
+                                            <outlet property="taskName" destination="hgK-cn-1HU" id="HAI-V6-oFe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -188,11 +190,14 @@
                         <viewLayoutGuide key="safeArea" id="a9I-5r-pmq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Current List" id="67c-tu-YKG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="VA4-EA-NYT">
-                            <connections>
-                                <segue destination="4sW-Ax-F9P" kind="presentation" id="MGn-Xb-64p"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="VA4-EA-NYT">
+                                <connections>
+                                    <segue destination="4sW-Ax-F9P" kind="presentation" identifier="AddTask" id="MGn-Xb-64p"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="Sal-aP-OIq"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="taskTable" destination="Det-Jq-9BJ" id="lwk-MA-tlD"/>
@@ -209,7 +214,43 @@
                     <view key="view" contentMode="scaleToFill" id="eC5-qQ-XKw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4gp-xE-Yd0">
+                                <rect key="frame" x="20" y="104" width="280" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="3x8-rM-r64">
+                                <rect key="frame" x="20" y="171" width="280" height="165"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="RYO-c1-dWk"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="540566814.849635">
+                                    <!--2018-02-17 13:26:54 +0000-->
+                                </date>
+                            </datePicker>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jDI-aJ-kvA">
+                                <rect key="frame" x="20" y="376" width="284" height="126"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jDI-aJ-kvA" firstAttribute="top" secondItem="3x8-rM-r64" secondAttribute="bottom" constant="40" id="822-Og-6Cf"/>
+                            <constraint firstItem="OqG-Yw-JdO" firstAttribute="trailing" secondItem="4gp-xE-Yd0" secondAttribute="trailing" constant="20" id="CvG-lC-WkS"/>
+                            <constraint firstItem="4gp-xE-Yd0" firstAttribute="leading" secondItem="OqG-Yw-JdO" secondAttribute="leading" constant="20" id="Ehy-ea-CFr"/>
+                            <constraint firstItem="3x8-rM-r64" firstAttribute="leading" secondItem="4gp-xE-Yd0" secondAttribute="leading" id="FL1-qT-2IV"/>
+                            <constraint firstItem="jDI-aJ-kvA" firstAttribute="trailing" secondItem="eC5-qQ-XKw" secondAttribute="trailingMargin" id="Hbs-hn-gSm"/>
+                            <constraint firstItem="jDI-aJ-kvA" firstAttribute="leading" secondItem="OqG-Yw-JdO" secondAttribute="leading" constant="20" id="MkZ-My-dJD"/>
+                            <constraint firstItem="3x8-rM-r64" firstAttribute="trailing" secondItem="4gp-xE-Yd0" secondAttribute="trailing" id="QqU-GL-pTn"/>
+                            <constraint firstItem="4gp-xE-Yd0" firstAttribute="top" secondItem="OqG-Yw-JdO" secondAttribute="top" constant="40" id="X3T-of-j6D"/>
+                            <constraint firstItem="OqG-Yw-JdO" firstAttribute="bottom" secondItem="jDI-aJ-kvA" secondAttribute="bottom" constant="66" id="bCx-93-Xcq"/>
+                            <constraint firstItem="3x8-rM-r64" firstAttribute="top" secondItem="4gp-xE-Yd0" secondAttribute="bottom" constant="37" id="eru-4e-3Ya"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OqG-Yw-JdO"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Task" id="zsg-0p-Goz">
@@ -218,12 +259,21 @@
                                 <action selector="cancel:" destination="4K4-AZ-icK" id="5Yz-Lk-bni"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6rP-8F-GEX"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6rP-8F-GEX">
+                            <connections>
+                                <action selector="saveTask:" destination="4K4-AZ-icK" id="EFE-mQ-ixY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateCompletion" destination="3x8-rM-r64" id="JY3-k5-ffW"/>
+                        <outlet property="descriptionTaskTextField" destination="4gp-xE-Yd0" id="7qh-nG-Zb7"/>
+                        <outlet property="note" destination="jDI-aJ-kvA" id="jqL-Pg-kNg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FY-a4-t0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070" y="1495"/>
+            <point key="canvasLocation" x="2070" y="1494.7183098591549"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3MB-Qf-eEf">

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ListViewController: UIViewController, UITableViewDataSource {
     
@@ -23,10 +24,28 @@ class ListViewController: UIViewController, UITableViewDataSource {
         if let list = list {
             navigationItem.title = list.name
             if let currentTasks = list.task {
-                tasks = currentTasks.allObjects as! [Task]
+                tasks = Array(currentTasks) as! [Task]
+            }
+            TaskViewController.currentList = list
+        }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let list = list {
+            navigationItem.title = list.name
+            if let currentTasks = list.task {
+                tasks = Array(currentTasks) as! [Task]
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        
+    }
+ 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -38,7 +57,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         let task = tasks[indexPath.row]
         
-        cell.descriptionTask.text = task.descriptionTask
+        cell.taskName.text = task.descriptionTask
         
         return cell
     }
@@ -50,6 +69,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
+    
     
     
     
