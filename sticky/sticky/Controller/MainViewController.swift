@@ -14,21 +14,22 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
     
     func refreshMainTable(_ newList: List) {
         lists.append(newList)
-        table.reloadData()
+        listTable.reloadData()
     }
     
-    @IBOutlet weak var table: UITableView!
+    
+    @IBOutlet weak var listTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.dataSource = self
+        listTable.dataSource = self
         
         let fetchRequest: NSFetchRequest<List> = List.fetchRequest() //получаю данные из CoreData
         do {
             let listsFetched = try PersistenceService.context.fetch(fetchRequest)
             self.lists = listsFetched
-            self.table.reloadData()
+            self.listTable.reloadData()
         }
         catch {
             let nserror = error as NSError
@@ -45,14 +46,26 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
     
     var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cellIdentifier = "ListTableViewCell"
-        switch segue.identifier! {
-        case cellIdentifier:
-            let destination = segue.destination as! ListViewController
-            let indexPath = table.indexPathForSelectedRow!
-            let selectedObject = lists[indexPath.row]
-            destination.currentList = selectedObject
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch (segue.identifier ?? "") {
+        case "ShowTasks":
+            guard let listDetailViewController = segue.destination as? ListViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedListCell = sender as? ListTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let index = listTable.indexPath(for: selectedListCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedList = lists[index.row]
+            listDetailViewController.list = selectedList
+            
         default:
             print("Unknown segue: \(segue.identifier)")
         }
@@ -93,7 +106,7 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
 
             do {
                 try PersistenceService.context.save()
-                table.reloadData()
+                listTable.reloadData()
             }
             catch {
                 let nserror = error as NSError
@@ -108,7 +121,7 @@ class MainViewController: UIViewController, UITableViewDataSource, AddListViewCo
         do {
             let listsFetched = try PersistenceService.context.fetch(fetchRequest)
             self.lists = listsFetched
-            self.table.reloadData()
+            self.listTable.reloadData()
         }
         catch {
             let nserror = error as NSError

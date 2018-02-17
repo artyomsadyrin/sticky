@@ -11,16 +11,22 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDataSource {
     
-    @IBOutlet weak var tableOfTasks: UITableView!
+    @IBOutlet weak var taskTable: UITableView!
+    
+    var tasks = [Task]()
+    var list: List?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableOfTasks.dataSource = self
-        loadTasks()
+        taskTable.dataSource = self
+        
+        if let list = list {
+            navigationItem.title = list.name
+            if let currentTasks = list.task {
+                tasks = currentTasks.allObjects as! [Task]
+            }
+        }
     }
-    
-    var tasks: [Tasks] = []
-    weak var currentList: List?
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -45,20 +51,6 @@ class ListViewController: UIViewController, UITableViewDataSource {
         return tasks.count
     }
     
-    private func loadTasks() {
-        guard let task1 = Tasks(description: "Clean room") else {
-            fatalError("Unable to instantiate list1")
-        }
-        
-        guard let task2 = Tasks(description: "Wash dishes") else {
-            fatalError("Unable to instantiate list2")
-        }
-        
-        guard let task3 = Tasks(description: "Take out trash") else {
-            fatalError("Unable to instantiate list2")
-        }
-        
-        tasks += [task1, task2, task3]
-    }
+    
     
 }

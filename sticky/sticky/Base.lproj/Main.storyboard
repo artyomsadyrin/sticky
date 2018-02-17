@@ -57,14 +57,14 @@
                                                     <rect key="frame" x="283" y="11" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
-                                                        <segue destination="HOf-Ex-RF4" kind="show" id="RNL-qN-teZ"/>
+                                                        <segue destination="HOf-Ex-RF4" kind="show" identifier="ShowDetail" id="RNL-qN-teZ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="listName" destination="SzW-5V-xfJ" id="eAq-Di-lJx"/>
-                                            <segue destination="dsN-WA-08J" kind="show" id="I6T-oL-Xiy"/>
+                                            <segue destination="dsN-WA-08J" kind="show" identifier="ShowTasks" id="I6T-oL-Xiy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -81,12 +81,12 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vaB-xq-e7Y">
                             <connections>
-                                <segue destination="KOB-N0-SNm" kind="presentation" id="JZU-rU-iJE"/>
+                                <segue destination="KOB-N0-SNm" kind="presentation" identifier="AddItem" id="JZU-rU-iJE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="table" destination="PXi-Zq-pJI" id="wQV-X1-RyR"/>
+                        <outlet property="listTable" destination="PXi-Zq-pJI" id="Wne-hR-k27"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -195,7 +195,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableOfTasks" destination="Det-Jq-9BJ" id="LDS-nU-Vxw"/>
+                        <outlet property="taskTable" destination="Det-Jq-9BJ" id="lwk-MA-tlD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DpQ-Qg-wnd" userLabel="First Responder" sceneMemberID="firstResponder"/>

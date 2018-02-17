@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 class Tasks {
     var descriptionTask: String
     
@@ -15,3 +15,4 @@ class Tasks {
         self.descriptionTask = description
     }
 }
+*/
