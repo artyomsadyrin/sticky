@@ -20,7 +20,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
         
         listTable.dataSource = self
         
-        updateListTable()
+        //updateListTable()
         
     }
 

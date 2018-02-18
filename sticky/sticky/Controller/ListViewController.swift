@@ -44,7 +44,22 @@ class ListViewController: UIViewController, UITableViewDataSource {
  
     func updateTasksTable() {
         
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         
+        do {
+            let gettingTasks = try PersistenceService.context.fetch(fetchRequest)
+            var tempTasks = [Task]()
+            for task in gettingTasks {
+                if task.list?.objectID == list?.objectID {
+                    tempTasks.append(task)
+                }
+            }
+            tasks = tempTasks
+            taskTable.reloadData()
+        }
+        catch {
+            fatalError("Can't get tasks.")
+        }
         
     }
     
@@ -58,9 +73,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         }
         
         let task = tasks[indexPath.row]
-        
         cell.taskName.text = task.descriptionTask
-        
         return cell
     }
     
@@ -77,7 +90,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         if editingStyle == .delete { //реализую удаление листов через свайп влево
             let task = tasks[indexPath.row]
             PersistenceService.context.delete(task)
-            
+            //tableView.deleteRows(at: [indexPath], with: .fade)
             do {
                 try PersistenceService.context.save()
                 updateTasksTable()
