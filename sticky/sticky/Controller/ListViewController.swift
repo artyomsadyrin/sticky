@@ -39,7 +39,29 @@ class ListViewController: UIViewController, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        
+        switch (segue.identifier ?? "") {
+        case "ShowTaskDetail":
+            guard let taskDetailViewController = segue.destination as? TaskViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedButton = sender as? UIButton else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let selectedListCell = selectedButton.superview?.superview as? TaskTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let index = taskTable.indexPath(for: selectedListCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedTask = tasks[index.row]
+            taskDetailViewController.currentTask = selectedTask
+        default:
+            print("Unknown segue: \(segue.identifier)")
+        }
     }
  
     func updateTasksTable() {

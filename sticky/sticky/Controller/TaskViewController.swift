@@ -17,11 +17,16 @@ class TaskViewController: UIViewController {
     
     @IBOutlet weak var taskDate: UIDatePicker!
     static weak var currentList: List?
+    weak var currentTask: Task?
     @IBOutlet weak var saveTaskButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let task = currentTask {
+            navigationItem.title = "Details"
+            taskDescription.text = task.descriptionTask
+        }
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {

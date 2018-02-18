@@ -18,10 +18,15 @@ class AddListViewController: UIViewController {
     
     @IBOutlet weak var listNameTextField: UITextField!
     weak var delegate: AddListViewControllerDelegate?
+    weak var currentList: List?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let list = currentList {
+            navigationItem.title = list.name
+            listNameTextField.text = list.name
+        }
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -51,8 +56,10 @@ class AddListViewController: UIViewController {
         }
         
         let list = List(context: PersistenceService.context)
+        
         list.name = listName
         PersistenceService.saveContext()
+        
         dismiss(animated: true, completion: nil)
     }
     
