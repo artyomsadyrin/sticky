@@ -8,25 +8,70 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class MainViewController: UIViewController, UITableViewDataSource {
-
-    @IBOutlet weak var table: UITableView!
+    
+    @IBOutlet weak var listTable: UITableView!
+    var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        table.dataSource = self
-
-        loadLists()
+        
+        listTable.dataSource = self
+        
+        //updateListTable()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
     
-    var lists: [Lists] = []
+    func updateListTable() {
+        
+        let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
+        do {
+            let listsFetched = try PersistenceService.context.fetch(fetchRequest)
+            self.lists = listsFetched
+            self.listTable.reloadData()
+        }
+        catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch (segue.identifier ?? "") {
+        case "ShowTasks":
+            guard let listDetailViewController = segue.destination as? ListViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedListCell = sender as? ListTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let index = listTable.indexPath(for: selectedListCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedList = lists[index.row]
+            listDetailViewController.list = selectedList
+            
+        default:
+            print("Unknown segue: \(segue.identifier)")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateListTable()
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -51,21 +96,30 @@ class MainViewController: UIViewController, UITableViewDataSource {
         return lists.count
     }
     
-    private func loadLists() {
-        guard let list1 = Lists(name: "Family") else {
-            fatalError("Unable to instantiate list1")
-        }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        guard let list2 = Lists(name: "Personal") else {
-            fatalError("Unable to instantiate list2")
-        }
-        
-        guard let list3 = Lists(name: "Work") else {
-            fatalError("Unable to instantiate list2")
-        }
-        
-        lists += [list1, list2, list3]
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete { //реализую удаление листов через свайп влево
+            let list = lists[indexPath.row]
+            PersistenceService.context.delete(list)
 
+            do {
+                try PersistenceService.context.save()
+                updateListTable()
+            }
+            catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    @IBAction func update(_ sender: UIBarButtonItem) {
+        updateListTable()
+    }
+    
 }
 

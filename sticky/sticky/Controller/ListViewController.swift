@@ -8,18 +8,61 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ListViewController: UIViewController, UITableViewDataSource {
     
-    @IBOutlet weak var tableOfTasks: UITableView!
+    @IBOutlet weak var taskTable: UITableView!
+    
+    var tasks = [Task]()
+    weak var list: List?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableOfTasks.dataSource = self
-        loadTasks()
+        taskTable.dataSource = self
+        
+        if let list = list {
+            navigationItem.title = list.name
+            if let currentTasks = list.task, let tasksArr = Array(currentTasks) as? [Task] {
+                tasks = tasksArr
+            }
+            TaskViewController.currentList = list
+        }
     }
     
-    var tasks: [Tasks] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTasksTable()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        
+    }
+ 
+    func updateTasksTable() {
+        
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        
+        do {
+            let gettingTasks = try PersistenceService.context.fetch(fetchRequest)
+            var tempTasks = [Task]()
+            for task in gettingTasks {
+                if task.list?.objectID == list?.objectID {
+                    tempTasks.append(task)
+                }
+            }
+            tasks = tempTasks
+            taskTable.reloadData()
+        }
+        catch {
+            fatalError("Can't get tasks.")
+        }
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -30,9 +73,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         }
         
         let task = tasks[indexPath.row]
-        
-        cell.descriptionTask.text = task.descriptionTask
-        
+        cell.taskName.text = task.descriptionTask
         return cell
     }
     
@@ -44,20 +85,26 @@ class ListViewController: UIViewController, UITableViewDataSource {
         return tasks.count
     }
     
-    private func loadTasks() {
-        guard let task1 = Tasks(description: "Clean room") else {
-            fatalError("Unable to instantiate list1")
-        }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard let task2 = Tasks(description: "Wash dishes") else {
-            fatalError("Unable to instantiate list2")
+        if editingStyle == .delete { //реализую удаление листов через свайп влево
+            let task = tasks[indexPath.row]
+            PersistenceService.context.delete(task)
+            //tableView.deleteRows(at: [indexPath], with: .fade)
+            do {
+                try PersistenceService.context.save()
+                updateTasksTable()
+            }
+            catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
         }
-        
-        guard let task3 = Tasks(description: "Take out trash") else {
-            fatalError("Unable to instantiate list2")
-        }
-        
-        tasks += [task1, task2, task3]
     }
+    
+    @IBAction func updateByClick(_ sender: UIBarButtonItem) {
+        updateTasksTable()
+    }
+    
     
 }
