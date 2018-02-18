@@ -14,11 +14,9 @@ class TaskViewController: UIViewController {
     
     
     @IBOutlet weak var taskDescription: UITextField!
-    
     @IBOutlet weak var taskDate: UIDatePicker!
     static weak var currentList: List?
     weak var currentTask: Task?
-    @IBOutlet weak var saveTaskButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,14 +49,14 @@ class TaskViewController: UIViewController {
         
         guard let taskName = taskDescription.text, taskName.count > 0 else {
             
-            let emptyField = UIAlertController(title: "Alert", message: "List name is empty", preferredStyle: .alert)
+            let emptyField = UIAlertController(title: "Alert", message: "Task name is empty", preferredStyle: .alert)
             emptyField.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(emptyField, animated: true, completion: nil)
             return
             
         }
        
-        if let currentList = TaskViewController.currentList {
+        if let currentList = TaskViewController.currentList { //записываю новый таск в БД, устанавливая связь на нужный лист
             let task = Task(context: PersistenceService.context)
             task.descriptionTask = taskName
             task.time = taskDate.date as NSDate

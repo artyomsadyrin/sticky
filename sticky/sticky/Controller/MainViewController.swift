@@ -20,8 +20,6 @@ class MainViewController: UIViewController, UITableViewDataSource {
         
         listTable.dataSource = self
         
-        //updateListTable()
-        
     }
 
     override func didReceiveMemoryWarning() {
