@@ -25,9 +25,9 @@ class TaskViewController: UIViewController {
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
-        let isPresentingInAddListMode = presentingViewController is UINavigationController
+        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
         
-        if isPresentingInAddListMode {
+        if isPresentingInAddTaskMode {
             dismiss(animated: true, completion: nil)
         }
         else if let owningNavigationController = navigationController {

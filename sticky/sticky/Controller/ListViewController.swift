@@ -23,8 +23,8 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         if let list = list {
             navigationItem.title = list.name
-            if let currentTasks = list.task {
-                tasks = Array(currentTasks) as! [Task]
+            if let currentTasks = list.task, let tasksArr = Array(currentTasks) as? [Task] {
+                tasks = tasksArr
             }
             TaskViewController.currentList = list
         }
@@ -43,12 +43,11 @@ class ListViewController: UIViewController, UITableViewDataSource {
     }
  
     func updateTasksTable() {
-        if let list = list {
-            if let currentTasks = list.task {
-                tasks = Array(currentTasks) as! [Task]
-            }
-        }
+        
+        
+        
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

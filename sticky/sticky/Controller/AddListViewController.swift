@@ -19,6 +19,11 @@ class AddListViewController: UIViewController {
     @IBOutlet weak var listNameTextField: UITextField!
     weak var delegate: AddListViewControllerDelegate?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
