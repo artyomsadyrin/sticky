@@ -12,11 +12,12 @@ import CoreData
 
 class TaskViewController: UIViewController {
     
-    @IBOutlet weak var descriptionTaskTextField: UITextField!
-    @IBOutlet weak var dateCompletion: UIDatePicker!
+    
+    @IBOutlet weak var taskDescription: UITextField!
+    
+    @IBOutlet weak var taskDate: UIDatePicker!
     static weak var currentList: List?
     @IBOutlet weak var saveTaskButton: UIBarButtonItem!
-    @IBOutlet weak var note: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class TaskViewController: UIViewController {
         
     @IBAction func saveTask(_ sender: UIBarButtonItem) {
         
-        guard let taskName = descriptionTaskTextField.text, taskName.count > 0 else {
+        guard let taskName = taskDescription.text, taskName.count > 0 else {
             
             let emptyField = UIAlertController(title: "Alert", message: "List name is empty", preferredStyle: .alert)
             emptyField.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -55,6 +56,7 @@ class TaskViewController: UIViewController {
         if let currentList = TaskViewController.currentList {
             let task = Task(context: PersistenceService.context)
             task.descriptionTask = taskName
+            task.time = taskDate.date as NSDate
             task.list = currentList
             PersistenceService.saveContext()
         }

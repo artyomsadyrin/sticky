@@ -74,6 +74,22 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         let task = tasks[indexPath.row]
         cell.taskName.text = task.descriptionTask
+        
+        if let taskDate = task.time as Date? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy hh:mm a"
+            let stringDate = dateFormatter.string(from: taskDate)
+            cell.taskDate.text = stringDate
+            
+            if taskDate < Date() {
+                cell.taskDate.textColor = .red
+            }
+            
+        }
+        else {
+            cell.taskDate.text = ""
+        }
+        
         return cell
     }
     
