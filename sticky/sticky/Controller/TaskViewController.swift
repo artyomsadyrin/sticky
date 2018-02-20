@@ -57,13 +57,32 @@ class TaskViewController: UIViewController {
         }
        
         if let currentList = TaskViewController.currentList { //записываю новый таск в БД, устанавливая связь на нужный лист
-            let task = Task(context: PersistenceService.context)
-            task.descriptionTask = taskName
-            task.time = taskDate.date as NSDate
-            task.list = currentList
-            PersistenceService.saveContext()
+            
+            if let currentTask = currentTask {
+                currentTask.descriptionTask = taskName
+                currentTask.time = taskDate.date as NSDate
+                PersistenceService.saveContext()
+            }
+            else {
+                let task = Task(context: PersistenceService.context)
+                task.descriptionTask = taskName
+                task.time = taskDate.date as NSDate
+                task.list = currentList
+                PersistenceService.saveContext()
+            }
         }
-        dismiss(animated: true, completion: nil)
+        
+        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddTaskMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The TaskViewController is not inside a navigation controller.")
+        }
     }
  
 }
