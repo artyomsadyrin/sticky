@@ -14,14 +14,17 @@ class TaskViewController: UIViewController {
     
     
     @IBOutlet weak var taskDescription: UITextField!
-    
     @IBOutlet weak var taskDate: UIDatePicker!
     static weak var currentList: List?
-    @IBOutlet weak var saveTaskButton: UIBarButtonItem!
+    weak var currentTask: Task?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let task = currentTask {
+            navigationItem.title = "Details"
+            taskDescription.text = task.descriptionTask
+        }
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -46,21 +49,40 @@ class TaskViewController: UIViewController {
         
         guard let taskName = taskDescription.text, taskName.count > 0 else {
             
-            let emptyField = UIAlertController(title: "Alert", message: "List name is empty", preferredStyle: .alert)
+            let emptyField = UIAlertController(title: "Alert", message: "Task name is empty", preferredStyle: .alert)
             emptyField.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(emptyField, animated: true, completion: nil)
             return
             
         }
        
-        if let currentList = TaskViewController.currentList {
-            let task = Task(context: PersistenceService.context)
-            task.descriptionTask = taskName
-            task.time = taskDate.date as NSDate
-            task.list = currentList
-            PersistenceService.saveContext()
+        if let currentList = TaskViewController.currentList { //записываю новый таск в БД, устанавливая связь на нужный лист
+            
+            if let currentTask = currentTask {
+                currentTask.descriptionTask = taskName
+                currentTask.time = taskDate.date as NSDate
+                PersistenceService.saveContext()
+            }
+            else {
+                let task = Task(context: PersistenceService.context)
+                task.descriptionTask = taskName
+                task.time = taskDate.date as NSDate
+                task.list = currentList
+                PersistenceService.saveContext()
+            }
         }
-        dismiss(animated: true, completion: nil)
+        
+        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddTaskMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The TaskViewController is not inside a navigation controller.")
+        }
     }
  
 }

@@ -20,8 +20,6 @@ class MainViewController: UIViewController, UITableViewDataSource {
         
         listTable.dataSource = self
         
-        //updateListTable()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +60,26 @@ class MainViewController: UIViewController, UITableViewDataSource {
             
             let selectedList = lists[index.row]
             listDetailViewController.list = selectedList
+            
+        case "ShowListDetail":
+            guard let addListViewController = segue.destination as? AddListViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedButton = sender as? UIButton else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let selectedListCell = selectedButton.superview?.superview as? ListTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let index = listTable.indexPath(for: selectedListCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedList = lists[index.row]
+            addListViewController.currentList = selectedList
             
         default:
             print("Unknown segue: \(segue.identifier)")

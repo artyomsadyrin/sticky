@@ -23,11 +23,9 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         if let list = list {
             navigationItem.title = list.name
-            if let currentTasks = list.task, let tasksArr = Array(currentTasks) as? [Task] {
-                tasks = tasksArr
-            }
             TaskViewController.currentList = list
         }
+        updateTasksTable()
     }
     
     
@@ -39,21 +37,46 @@ class ListViewController: UIViewController, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        
+        switch (segue.identifier ?? "") {
+        case "ShowTaskDetail":
+            guard let taskDetailViewController = segue.destination as? TaskViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedButton = sender as? UIButton else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let selectedListCell = selectedButton.superview?.superview as? TaskTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let index = taskTable.indexPath(for: selectedListCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedTask = tasks[index.row]
+            taskDetailViewController.currentTask = selectedTask //отправляю NSManagedObject в TaskVC
+            
+        default:
+            print("Unknown segue: \(segue.identifier)")
+        }
     }
- 
-    func updateTasksTable() {
+    
+    func updateTasksTable() { //метод, который получает из БД все таски, добавленный на данный момент, и записывает их в массив tasks
         
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         
         do {
             let gettingTasks = try PersistenceService.context.fetch(fetchRequest)
             var tempTasks = [Task]()
-            for task in gettingTasks {
+            
+            for task in gettingTasks { //получаю все таски по выбранному листу
                 if task.list?.objectID == list?.objectID {
                     tempTasks.append(task)
                 }
             }
+            
             tasks = tempTasks
             taskTable.reloadData()
         }
@@ -78,10 +101,10 @@ class ListViewController: UIViewController, UITableViewDataSource {
         if let taskDate = task.time as Date? {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy hh:mm a"
-            let stringDate = dateFormatter.string(from: taskDate)
+            let stringDate = dateFormatter.string(from: taskDate) //делаю дату, полученную из БД, в нужном формате
             cell.taskDate.text = stringDate
             
-            if taskDate < Date() {
+            if taskDate < Date() { //проверяю истек ли срок выполнения таска
                 cell.taskDate.textColor = .red
             }
             
@@ -106,7 +129,6 @@ class ListViewController: UIViewController, UITableViewDataSource {
         if editingStyle == .delete { //реализую удаление листов через свайп влево
             let task = tasks[indexPath.row]
             PersistenceService.context.delete(task)
-            //tableView.deleteRows(at: [indexPath], with: .fade)
             do {
                 try PersistenceService.context.save()
                 updateTasksTable()
