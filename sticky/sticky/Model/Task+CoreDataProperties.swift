@@ -19,7 +19,6 @@ extension Task {
 
     @NSManaged public var descriptionTask: String?
     @NSManaged public var isDone: Bool
-    @NSManaged public var note: String?
     @NSManaged public var time: NSDate?
     @NSManaged public var list: List?
 

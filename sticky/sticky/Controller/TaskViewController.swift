@@ -67,6 +67,7 @@ class TaskViewController: UIViewController {
                 let task = Task(context: PersistenceService.context)
                 task.descriptionTask = taskName
                 task.time = taskDate.date as NSDate
+                task.isDone = false
                 task.list = currentList
                 PersistenceService.saveContext()
             }

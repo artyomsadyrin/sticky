@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-742" y="460"/>
         </scene>
-        <!--Main-->
+        <!--Sticky-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="sticky" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="A8s-Hy-vic">
+                    <navigationItem key="navigationItem" title="Sticky" id="A8s-Hy-vic">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="CVR-YP-laT">
                             <connections>
                                 <action selector="update:" destination="BYZ-38-t0r" id="1HD-TM-FMB"/>
@@ -161,6 +161,9 @@
                                                     <rect key="frame" x="15" y="6" width="46" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Do"/>
+                                                    <connections>
+                                                        <action selector="taskIsDone:" destination="dsN-WA-08J" eventType="touchUpInside" id="rOj-cq-AAN"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gm-uY-iO3">
                                                     <rect key="frame" x="271" y="10" width="22" height="22"/>
@@ -203,9 +206,9 @@
                                     <segue destination="4sW-Ax-F9P" kind="presentation" identifier="AddTask" id="MGn-Xb-64p"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="Sal-aP-OIq">
+                            <barButtonItem systemItem="trash" id="Sal-aP-OIq">
                                 <connections>
-                                    <action selector="updateByClick:" destination="dsN-WA-08J" id="AqF-BO-Pqc"/>
+                                    <action selector="getDoneTasks:" destination="dsN-WA-08J" id="59z-vR-AzJ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
