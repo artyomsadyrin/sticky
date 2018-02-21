@@ -13,7 +13,7 @@ protocol AddListViewControllerDelegate: class {
     func refreshMainTable(_ newList: List)
 }
 
-class AddListViewController: UIViewController {
+class AddListViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var listNameTextField: UITextField!
@@ -22,11 +22,17 @@ class AddListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        listNameTextField.delegate = self
         
         if let list = currentList {
             navigationItem.title = list.name
             listNameTextField.text = list.name
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {

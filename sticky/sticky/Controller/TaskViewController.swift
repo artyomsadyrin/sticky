@@ -21,7 +21,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.taskDescription.delegate = self
+        taskDescription.delegate = self
         
         if let task = currentTask {
             navigationItem.title = "Details"
