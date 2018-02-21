@@ -34,6 +34,9 @@ class ListViewController: UIViewController, UITableViewDataSource {
         updateTasksTable()
     }
     
+    
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -47,15 +50,15 @@ class ListViewController: UIViewController, UITableViewDataSource {
                 fatalError("Unexpected sender: \(sender)")
             }
             
-            guard let selectedListCell = selectedButton.superview?.superview as? TaskTableViewCell else {
+            guard let selectedTaskCell = selectedButton.superview?.superview as? TaskTableViewCell else {
                 fatalError("Unexpected sender: \(sender)")
             }
             
-            guard let index = taskTable.indexPath(for: selectedListCell) else {
+            guard let indexPath = taskTable.indexPath(for: selectedTaskCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            let selectedTask = tasks[index.row]
+            let selectedTask = tasks[indexPath.row]
             taskDetailViewController.currentTask = selectedTask //отправляю NSManagedObject в TaskVC
             
         default:
@@ -63,7 +66,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    func updateTasksTable() { //метод, который получает из БД все таски, добавленный на данный момент, и записывает их в массив tasks
+    func updateTasksTable() { //метод, который получает из БД все невыполненные таски, добавленный на данный момент, и записывает их в массив tasks
         
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         
@@ -72,7 +75,30 @@ class ListViewController: UIViewController, UITableViewDataSource {
             var tempTasks = [Task]()
             
             for task in gettingTasks { //получаю все таски по выбранному листу
-                if task.list?.objectID == list?.objectID {
+                if task.list?.objectID == list?.objectID && task.isDone == false {
+                    tempTasks.append(task)
+                }
+            }
+            
+            tasks = tempTasks
+            taskTable.reloadData()
+        }
+        catch {
+            fatalError("Can't get tasks.")
+        }
+        
+    }
+    
+    func updateTaskTableWithDoneTask() {
+        
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        
+        do {
+            let gettingTasks = try PersistenceService.context.fetch(fetchRequest)
+            var tempTasks = [Task]()
+            
+            for task in gettingTasks { //получаю все таски по выбранному листу
+                if task.list?.objectID == list?.objectID && task.isDone == true {
                     tempTasks.append(task)
                 }
             }
@@ -110,7 +136,8 @@ class ListViewController: UIViewController, UITableViewDataSource {
             
         }
         else {
-            cell.taskDate.text = ""
+            
+            cell.taskDate.isHidden = true
         }
         
         return cell
@@ -129,9 +156,16 @@ class ListViewController: UIViewController, UITableViewDataSource {
         if editingStyle == .delete { //реализую удаление листов через свайп влево
             let task = tasks[indexPath.row]
             PersistenceService.context.delete(task)
+            
+            if task.isDone == true {
+                updateTaskTableWithDoneTask()
+            }
+            else {
+                updateTasksTable()
+            }
+            
             do {
                 try PersistenceService.context.save()
-                updateTasksTable()
             }
             catch {
                 let nserror = error as NSError
@@ -140,8 +174,38 @@ class ListViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    @IBAction func updateByClick(_ sender: UIBarButtonItem) {
-        updateTasksTable()
+    @IBAction func taskIsDone(_ sender: UIButton) {
+        
+        guard let selectedButton = sender as? UIButton else {
+            fatalError("Unexpected sender: \(sender)")
+        }
+        
+        guard let selectedTaskCell = selectedButton.superview?.superview as? TaskTableViewCell else {
+            fatalError("Unexpected sender: \(sender)")
+        }
+        
+        guard let index = taskTable.indexPath(for: selectedTaskCell) else {
+            fatalError("The selected cell is not being displayed by the table")
+        }
+        
+        let selectedTask = tasks[index.row]
+        
+        if selectedTask.isDone == false {
+            
+            selectedTask.isDone = true
+            PersistenceService.saveContext()
+            
+            tasks.remove(at: index.row)
+            taskTable.deleteRows(at: [index], with: .fade)
+            
+        }
+    }
+    
+    
+    @IBAction func getDoneTasks(_ sender: UIBarButtonItem) {
+        
+        updateTaskTableWithDoneTask()
+        
     }
     
     

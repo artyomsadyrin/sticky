@@ -10,21 +10,31 @@ import Foundation
 import UIKit
 import CoreData
 
-class TaskViewController: UIViewController {
+class TaskViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var taskDescription: UITextField!
     @IBOutlet weak var taskDate: UIDatePicker!
     static weak var currentList: List?
     weak var currentTask: Task?
+    @IBOutlet weak var switchRemindOnDayOutlet: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        taskDescription.delegate = self
         
         if let task = currentTask {
             navigationItem.title = "Details"
             taskDescription.text = task.descriptionTask
         }
+        
+        taskDate.isEnabled = false
+        taskDate.isHidden = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -43,6 +53,17 @@ class TaskViewController: UIViewController {
         
     }
     
+    @IBAction func switchRemindOnDay(_ sender: UISwitch) {
+        
+        if sender.isOn == true {
+            taskDate.isEnabled = true
+            taskDate.isHidden = false
+        }
+        else {
+            taskDate.isEnabled = false
+            taskDate.isHidden = true
+        }
+    }
         
         
     @IBAction func saveTask(_ sender: UIBarButtonItem) {
@@ -60,14 +81,23 @@ class TaskViewController: UIViewController {
             
             if let currentTask = currentTask {
                 currentTask.descriptionTask = taskName
-                currentTask.time = taskDate.date as NSDate
+                
+                if switchRemindOnDayOutlet.isOn == true {
+                    currentTask.time = taskDate.date as NSDate
+                }
+                
                 PersistenceService.saveContext()
             }
             else {
                 let task = Task(context: PersistenceService.context)
                 task.descriptionTask = taskName
-                task.time = taskDate.date as NSDate
+                task.isDone = false
                 task.list = currentList
+                
+                if switchRemindOnDayOutlet.isOn == true {
+                    task.time = taskDate.date as NSDate
+                }
+                
                 PersistenceService.saveContext()
             }
         }
