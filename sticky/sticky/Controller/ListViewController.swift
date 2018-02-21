@@ -34,6 +34,9 @@ class ListViewController: UIViewController, UITableViewDataSource {
         updateTasksTable()
     }
     
+    
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -133,7 +136,8 @@ class ListViewController: UIViewController, UITableViewDataSource {
             
         }
         else {
-            cell.taskDate.text = ""
+            
+            cell.taskDate.isHidden = true
         }
         
         return cell

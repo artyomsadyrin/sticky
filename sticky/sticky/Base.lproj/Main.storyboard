@@ -229,11 +229,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4gp-xE-Yd0">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4gp-xE-Yd0">
                                 <rect key="frame" x="20" y="104" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3x8-rM-r64">
                                 <rect key="frame" x="20" y="236" width="280" height="165"/>
@@ -252,6 +252,9 @@
                             </datePicker>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oNy-v0-FMe">
                                 <rect key="frame" x="251" y="185" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchRemindOnDay:" destination="4K4-AZ-icK" eventType="valueChanged" id="45J-X5-0DD"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me on a day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxY-a8-18D">
                                 <rect key="frame" x="20" y="190" width="155" height="21"/>
@@ -290,6 +293,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="switchRemindOnDayOutlet" destination="oNy-v0-FMe" id="Bv8-RK-0Ap"/>
                         <outlet property="taskDate" destination="3x8-rM-r64" id="F6W-US-nye"/>
                         <outlet property="taskDescription" destination="4gp-xE-Yd0" id="O0G-gb-prq"/>
                     </connections>
