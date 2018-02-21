@@ -22,14 +22,23 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         taskDescription.delegate = self
+        taskDate.isHidden = true
         
         if let task = currentTask {
             navigationItem.title = "Details"
             taskDescription.text = task.descriptionTask
+            
+            if let time = task.time {
+                switchRemindOnDayOutlet.isOn = true
+                taskDate.isHidden = false
+                taskDate.date = time as Date
+            }
+            else {
+                taskDate.isHidden = true
+            }
         }
         
-        taskDate.isEnabled = false
-        taskDate.isHidden = true
+        //taskDate.isEnabled = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -56,11 +65,11 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     @IBAction func switchRemindOnDay(_ sender: UISwitch) {
         
         if sender.isOn == true {
-            taskDate.isEnabled = true
+            //taskDate.isEnabled = true
             taskDate.isHidden = false
         }
         else {
-            taskDate.isEnabled = false
+            //taskDate.isEnabled = false
             taskDate.isHidden = true
         }
     }
@@ -84,6 +93,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
                 
                 if switchRemindOnDayOutlet.isOn == true {
                     currentTask.time = taskDate.date as NSDate
+                }
+                else {
+                    currentTask.time = nil
                 }
                 
                 PersistenceService.saveContext()
