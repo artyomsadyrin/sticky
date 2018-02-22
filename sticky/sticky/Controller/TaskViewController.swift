@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 import CoreData
+import UserNotifications
+import UserNotificationsUI
 
-class TaskViewController: UIViewController, UITextFieldDelegate {
+class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
     
     
     @IBOutlet weak var taskDescription: UITextField!
@@ -23,6 +25,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         taskDescription.delegate = self
         taskDate.isHidden = true
+        UNUserNotificationCenter.current().delegate = self
         
         if let task = currentTask {
             navigationItem.title = "Details"
@@ -39,6 +42,11 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         }
         
         //taskDate.isEnabled = false
+    }
+    
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
+        
+        completionHandler([.alert, .sound])
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -73,6 +81,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
             taskDate.isHidden = true
         }
     }
+    
         
         
     @IBAction func saveTask(_ sender: UIBarButtonItem) {
@@ -93,6 +102,8 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
                 
                 if switchRemindOnDayOutlet.isOn == true {
                     currentTask.time = taskDate.date as NSDate
+                    
+                    buildNotification(taskName: taskName, taskDate: taskDate.date)
                 }
                 else {
                     currentTask.time = nil
@@ -108,6 +119,8 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
                 
                 if switchRemindOnDayOutlet.isOn == true {
                     task.time = taskDate.date as NSDate
+                    
+                    buildNotification(taskName: taskName, taskDate: taskDate.date)
                 }
                 
                 PersistenceService.saveContext()
@@ -125,6 +138,32 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         else {
             fatalError("The TaskViewController is not inside a navigation controller.")
         }
+    }
+    
+    func buildNotification(taskName: String, taskDate: Date) {
+        
+        if taskDate > Date() {
+            
+            let content = UNMutableNotificationContent()
+            content.title = NSString.localizedUserNotificationString(forKey:
+                "\(taskName)", arguments: nil)
+            
+            // Deliver the notification.
+            content.sound = UNNotificationSound.default()
+            let nowTime = Date()
+            
+            let timeInterval: Double = taskDate.timeIntervalSince(nowTime)
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+            
+            // Schedule the notification.
+            let request = UNNotificationRequest(identifier: "Remind for task", content: content, trigger: trigger)
+            let center = UNUserNotificationCenter.current()
+            center.add(request, withCompletionHandler: nil)
+            
+            print("add notification")
+        }
+        
     }
  
 }
