@@ -133,10 +133,8 @@ class ListViewController: UIViewController, UITableViewDataSource {
             if taskDate < Date() { //проверяю истек ли срок выполнения таска
                 cell.taskDate.textColor = .red
             }
-            
         }
         else {
-            
             cell.taskDate.isHidden = true
         }
         

@@ -25,7 +25,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
         super.viewDidLoad()
         taskDescription.delegate = self
         taskDate.isHidden = true
-        UNUserNotificationCenter.current().delegate = self
         
         if let task = currentTask {
             navigationItem.title = "Details"
@@ -41,12 +40,12 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
             }
         }
         
-        //taskDate.isEnabled = false
     }
     
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
         
         completionHandler([.alert, .sound])
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
