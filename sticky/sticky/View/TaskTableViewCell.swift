@@ -12,7 +12,6 @@ import UIKit
 class TaskTableViewCell: UITableViewCell {
     
     @IBOutlet weak var taskName: UILabel!
-    
     @IBOutlet weak var taskDate: UILabel!
     
     override func awakeFromNib() {
@@ -22,7 +21,6 @@ class TaskTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

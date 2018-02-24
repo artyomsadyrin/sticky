@@ -18,6 +18,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
     weak var list: List?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         taskTable.dataSource = self
         
@@ -26,6 +27,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
             TaskViewController.currentList = list
         }
         updateTasksTable()
+        
     }
     
     
@@ -35,9 +37,10 @@ class ListViewController: UIViewController, UITableViewDataSource {
     }
     
     
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         super.prepare(for: segue, sender: sender)
         
         switch (segue.identifier ?? "") {
@@ -64,6 +67,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         default:
             print("Unknown segue: \(segue.identifier)")
         }
+        
     }
     
     func updateTasksTable() { //метод, который получает из БД все невыполненные таски, добавленный на данный момент, и записывает их в массив tasks
@@ -139,6 +143,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         }
         
         return cell
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -170,6 +175,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+        
     }
     
     @IBAction func taskIsDone(_ sender: UIButton) {
@@ -197,13 +203,12 @@ class ListViewController: UIViewController, UITableViewDataSource {
             taskTable.deleteRows(at: [index], with: .fade)
             
         }
+        
     }
     
     
     @IBAction func getDoneTasks(_ sender: UIBarButtonItem) {
-        
         updateTaskTableWithDoneTask()
-        
     }
     
     

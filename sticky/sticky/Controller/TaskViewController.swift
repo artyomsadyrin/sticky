@@ -22,6 +22,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
     @IBOutlet weak var switchRemindOnDayOutlet: UISwitch!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         taskDescription.delegate = self
         taskDate.isHidden = true
@@ -79,10 +80,11 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
             //taskDate.isEnabled = false
             taskDate.isHidden = true
         }
+        
     }
     
-        
-        
+    
+    
     @IBAction func saveTask(_ sender: UIBarButtonItem) {
         
         guard let taskName = taskDescription.text, taskName.count > 0 else {
@@ -93,7 +95,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
             return
             
         }
-       
+        
         if let currentList = TaskViewController.currentList { //записываю новый таск в БД, устанавливая связь на нужный лист
             
             if let currentTask = currentTask {
@@ -137,6 +139,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
         else {
             fatalError("The TaskViewController is not inside a navigation controller.")
         }
+        
     }
     
     func buildNotification(taskName: String, taskDate: Date) {
@@ -164,5 +167,5 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
         }
         
     }
- 
+    
 }

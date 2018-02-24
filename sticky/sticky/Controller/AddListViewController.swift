@@ -21,6 +21,7 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
     weak var currentList: List?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         listNameTextField.delegate = self
         
@@ -28,6 +29,7 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
             navigationItem.title = list.name
             listNameTextField.text = list.name
         }
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -84,6 +86,5 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
     
 }

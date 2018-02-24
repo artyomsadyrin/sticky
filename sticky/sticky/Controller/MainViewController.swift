@@ -17,17 +17,15 @@ class MainViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         listTable.dataSource = self
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     func updateListTable() {
-        
+
         let fetchRequest: NSFetchRequest<List> = List.fetchRequest()
         do {
             let listsFetched = try PersistenceService.context.fetch(fetchRequest)
@@ -42,6 +40,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         super.prepare(for: segue, sender: sender)
         
         switch (segue.identifier ?? "") {
@@ -84,6 +83,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
         default:
             print("Unknown segue: \(segue.identifier)")
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +104,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
         cell.listName.text = list.name
         
         return cell
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,16 +115,13 @@ class MainViewController: UIViewController, UITableViewDataSource {
         return lists.count
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete { //реализую удаление листов через свайп влево
             let list = lists[indexPath.row]
             PersistenceService.context.delete(list)
-
+            
             do {
                 try PersistenceService.context.save()
                 updateListTable()
@@ -133,6 +131,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+        
     }
     
     @IBAction func update(_ sender: UIBarButtonItem) {
