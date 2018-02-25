@@ -73,11 +73,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
     @IBAction func switchRemindOnDay(_ sender: UISwitch) {
         
         if sender.isOn == true {
-            //taskDate.isEnabled = true
             taskDate.isHidden = false
         }
         else {
-            //taskDate.isEnabled = false
             taskDate.isHidden = true
         }
         
