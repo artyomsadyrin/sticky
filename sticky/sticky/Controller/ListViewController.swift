@@ -206,7 +206,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         else {
             selectedTask.isDone = false
             PersistenceService.saveContext()
-            
+                        
             tasks.remove(at: index.row)
             taskTable.deleteRows(at: [index], with: .fade)
         }
