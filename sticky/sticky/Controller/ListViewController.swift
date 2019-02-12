@@ -50,11 +50,11 @@ class ListViewController: UIViewController, UITableViewDataSource {
             }
             
             guard let selectedButton = sender as? UIButton else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
             guard let selectedTaskCell = selectedButton.superview?.superview as? TaskTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
             guard let indexPath = taskTable.indexPath(for: selectedTaskCell) else {
@@ -65,7 +65,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
             taskDetailViewController.currentTask = selectedTask //отправляю NSManagedObject в TaskVC
             
         default:
-            print("Unknown segue: \(segue.identifier)")
+            print("Unknown segue: \(String(describing: segue.identifier))")
         }
         
     }
@@ -154,7 +154,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         return tasks.count
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete { //реализую удаление листов через свайп влево
             let task = tasks[indexPath.row]
@@ -180,11 +180,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func taskIsDone(_ sender: UIButton) {
         
-        guard let selectedButton = sender as? UIButton else {
-            fatalError("Unexpected sender: \(sender)")
-        }
-        
-        guard let selectedTaskCell = selectedButton.superview?.superview as? TaskTableViewCell else {
+        guard let selectedTaskCell = sender.superview?.superview as? TaskTableViewCell else {
             fatalError("Unexpected sender: \(sender)")
         }
         

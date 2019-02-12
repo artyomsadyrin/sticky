@@ -149,7 +149,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
                 "\(taskName)", arguments: nil)
             
             // Deliver the notification.
-            content.sound = UNNotificationSound.default()
+            content.sound = UNNotificationSound.default
             let nowTime = Date()
             
             let timeInterval: Double = taskDate.timeIntervalSince(nowTime)

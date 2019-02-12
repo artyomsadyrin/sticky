@@ -50,7 +50,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
             }
             
             guard let selectedListCell = sender as? ListTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
             guard let index = listTable.indexPath(for: selectedListCell) else {
@@ -66,11 +66,11 @@ class MainViewController: UIViewController, UITableViewDataSource {
             }
             
             guard let selectedButton = sender as? UIButton else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
             guard let selectedListCell = selectedButton.superview?.superview as? ListTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
             guard let index = listTable.indexPath(for: selectedListCell) else {
@@ -81,7 +81,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
             addListViewController.currentList = selectedList
             
         default:
-            print("Unknown segue: \(segue.identifier)")
+            print("Unknown segue: \(String(describing: segue.identifier))")
         }
         
     }
@@ -116,7 +116,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete { //реализую удаление листов через свайп влево
             let list = lists[indexPath.row]
