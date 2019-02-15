@@ -9,15 +9,10 @@
 import Foundation
 import UIKit
 
-protocol AddListViewControllerDelegate: class {
-    func refreshMainTable(_ newList: List)
-}
-
 class AddListViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var listNameTextField: UITextField!
-    weak var delegate: AddListViewControllerDelegate?
     weak var currentList: List?
     
     override func viewDidLoad() {

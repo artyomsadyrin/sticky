@@ -14,7 +14,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var taskTable: UITableView!
     
-    var tasks = [Task]()
+    private var tasks = [Task]()
     weak var list: List?
     
     override func viewDidLoad() {

@@ -13,7 +13,7 @@ import CoreData
 class MainViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var listTable: UITableView!
-    var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
+    private var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
