@@ -17,7 +17,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
     
     @IBOutlet weak var taskDescription: UITextField!
     @IBOutlet weak var taskDate: UIDatePicker!
-    static weak var currentList: List?
+    weak var currentList: List?
     weak var currentTask: Task?
     @IBOutlet weak var switchRemindOnDayOutlet: UISwitch!
     
@@ -94,7 +94,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
             
         }
         
-        if let currentList = TaskViewController.currentList { //записываю новый таск в БД, устанавливая связь на нужный лист
+        if let currentList = currentList { //записываю новый таск в БД, устанавливая связь на нужный лист
             
             if let currentTask = currentTask {
                 currentTask.descriptionTask = taskName

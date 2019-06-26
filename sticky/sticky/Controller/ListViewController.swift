@@ -24,7 +24,6 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         if let list = list {
             navigationItem.title = list.name
-            TaskViewController.currentList = list
         }
         updateTasksTable()
         
@@ -49,11 +48,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            guard let selectedButton = sender as? UIButton else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            
-            guard let selectedTaskCell = selectedButton.superview?.superview as? TaskTableViewCell else {
+            guard let selectedTaskCell = sender as? TaskTableViewCell else {
                 fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
@@ -63,7 +58,13 @@ class ListViewController: UIViewController, UITableViewDataSource {
             
             let selectedTask = tasks[indexPath.row]
             taskDetailViewController.currentTask = selectedTask //отправляю NSManagedObject в TaskVC
+            taskDetailViewController.currentList = list
             
+        case "AddTask":
+            guard let taskDetailViewController = segue.destination.contents as? TaskViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            taskDetailViewController.currentList = list
         default:
             print("Unknown segue: \(String(describing: segue.identifier))")
         }
@@ -215,4 +216,17 @@ class ListViewController: UIViewController, UITableViewDataSource {
     }
     
     
+}
+
+extension UIViewController {
+    // Property для получения ViewController, когда перед ViewController стоит NavigationController
+    var contents: UIViewController {
+        if let navcon = self as? UINavigationController {
+            // Если перед нами NavigationController, то возвращается ViewController, в который идет переход через NavigationController
+            return navcon.visibleViewController ?? self
+        } else {
+            // Если перед нами ViewController, то возвращается self
+            return self
+        }
+    }
 }
