@@ -33,6 +33,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateTasksTable()
+        print("Updated")
     }
     
     

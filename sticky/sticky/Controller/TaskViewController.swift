@@ -129,7 +129,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
         let isPresentingInAddTaskMode = presentingViewController is UINavigationController
         
         if isPresentingInAddTaskMode {
-            dismiss(animated: true, completion: nil)
+            presentingViewController?.dismiss(animated: true, completion: nil)
         }
         else if let owningNavigationController = navigationController {
             owningNavigationController.popViewController(animated: true)

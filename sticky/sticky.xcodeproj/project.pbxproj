@@ -25,23 +25,6 @@
 		7BF5DCFF2020254500DD9247 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5DCFB2020254500DD9247 /* Task+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7BB95C46200BB31C0014DF17 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7BB95C26200BB31C0014DF17 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7BB95C2D200BB31C0014DF17;
-			remoteInfo = sticky;
-		};
-		7BB95C51200BB31D0014DF17 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7BB95C26200BB31C0014DF17 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7BB95C2D200BB31C0014DF17;
-			remoteInfo = sticky;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		7B0A7E112030750600DA437C /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		7B310079201103470083221C /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
@@ -57,8 +40,6 @@
 		7BB95C3B200BB31C0014DF17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB95C3E200BB31C0014DF17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BB95C40200BB31C0014DF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BB95C45200BB31C0014DF17 /* stickyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stickyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BB95C50200BB31D0014DF17 /* stickyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stickyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF5DCF82020254500DD9247 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BF5DCF92020254500DD9247 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7BF5DCFA2020254500DD9247 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -67,20 +48,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		7BB95C2B200BB31C0014DF17 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7BB95C42200BB31C0014DF17 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7BB95C4D200BB31D0014DF17 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -130,8 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				7BB95C2E200BB31C0014DF17 /* sticky.app */,
-				7BB95C45200BB31C0014DF17 /* stickyTests.xctest */,
-				7BB95C50200BB31D0014DF17 /* stickyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,42 +149,6 @@
 			productReference = 7BB95C2E200BB31C0014DF17 /* sticky.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7BB95C44200BB31C0014DF17 /* stickyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7BB95C5C200BB31D0014DF17 /* Build configuration list for PBXNativeTarget "stickyTests" */;
-			buildPhases = (
-				7BB95C41200BB31C0014DF17 /* Sources */,
-				7BB95C42200BB31C0014DF17 /* Frameworks */,
-				7BB95C43200BB31C0014DF17 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7BB95C47200BB31C0014DF17 /* PBXTargetDependency */,
-			);
-			name = stickyTests;
-			productName = stickyTests;
-			productReference = 7BB95C45200BB31C0014DF17 /* stickyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		7BB95C4F200BB31D0014DF17 /* stickyUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7BB95C5F200BB31D0014DF17 /* Build configuration list for PBXNativeTarget "stickyUITests" */;
-			buildPhases = (
-				7BB95C4C200BB31D0014DF17 /* Sources */,
-				7BB95C4D200BB31D0014DF17 /* Frameworks */,
-				7BB95C4E200BB31D0014DF17 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7BB95C52200BB31D0014DF17 /* PBXTargetDependency */,
-			);
-			name = stickyUITests;
-			productName = stickyUITests;
-			productReference = 7BB95C50200BB31D0014DF17 /* stickyUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -232,20 +161,8 @@
 				TargetAttributes = {
 					7BB95C2D200BB31C0014DF17 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
-					};
-					7BB95C44200BB31C0014DF17 = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 7BB95C2D200BB31C0014DF17;
-					};
-					7BB95C4F200BB31D0014DF17 = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 7BB95C2D200BB31C0014DF17;
 					};
 				};
 			};
@@ -263,8 +180,6 @@
 			projectRoot = "";
 			targets = (
 				7BB95C2D200BB31C0014DF17 /* sticky */,
-				7BB95C44200BB31C0014DF17 /* stickyTests */,
-				7BB95C4F200BB31D0014DF17 /* stickyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -277,20 +192,6 @@
 				7BB95C3F200BB31C0014DF17 /* LaunchScreen.storyboard in Resources */,
 				7BB95C3C200BB31C0014DF17 /* Assets.xcassets in Resources */,
 				7BB95C37200BB31C0014DF17 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7BB95C43200BB31C0014DF17 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7BB95C4E200BB31D0014DF17 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,34 +218,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7BB95C41200BB31C0014DF17 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7BB95C4C200BB31D0014DF17 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7BB95C47200BB31C0014DF17 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7BB95C2D200BB31C0014DF17 /* sticky */;
-			targetProxy = 7BB95C46200BB31C0014DF17 /* PBXContainerItemProxy */;
-		};
-		7BB95C52200BB31D0014DF17 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7BB95C2D200BB31C0014DF17 /* sticky */;
-			targetProxy = 7BB95C51200BB31D0014DF17 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7BB95C35200BB31C0014DF17 /* Main.storyboard */ = {
@@ -487,7 +361,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.artyomsadyrin.sticky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -502,74 +376,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.artyomsadyrin.sticky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		7BB95C5D200BB31D0014DF17 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8LSCB2ZP9M;
-				INFOPLIST_FILE = stickyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.artyomsadyrin.stickyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sticky.app/sticky";
-			};
-			name = Debug;
-		};
-		7BB95C5E200BB31D0014DF17 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8LSCB2ZP9M;
-				INFOPLIST_FILE = stickyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.artyomsadyrin.stickyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sticky.app/sticky";
-			};
-			name = Release;
-		};
-		7BB95C60200BB31D0014DF17 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8LSCB2ZP9M;
-				INFOPLIST_FILE = stickyUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.artyomsadyrin.stickyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = sticky;
-			};
-			name = Debug;
-		};
-		7BB95C61200BB31D0014DF17 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8LSCB2ZP9M;
-				INFOPLIST_FILE = stickyUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.artyomsadyrin.stickyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = sticky;
 			};
 			name = Release;
 		};
@@ -590,24 +398,6 @@
 			buildConfigurations = (
 				7BB95C5A200BB31D0014DF17 /* Debug */,
 				7BB95C5B200BB31D0014DF17 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7BB95C5C200BB31D0014DF17 /* Build configuration list for PBXNativeTarget "stickyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7BB95C5D200BB31D0014DF17 /* Debug */,
-				7BB95C5E200BB31D0014DF17 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7BB95C5F200BB31D0014DF17 /* Build configuration list for PBXNativeTarget "stickyUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7BB95C60200BB31D0014DF17 /* Debug */,
-				7BB95C61200BB31D0014DF17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
