@@ -14,10 +14,13 @@ class MainViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var listTable: UITableView!
     private var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
+    private let listsRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         listTable.dataSource = self
+        listTable.refreshControl = listsRefreshControl
+        listsRefreshControl.addTarget(self, action: #selector(updateListsTableView(_:)), for: .valueChanged)
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,6 +34,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
             let listsFetched = try PersistenceService.context.fetch(fetchRequest)
             self.lists = listsFetched
             self.listTable.reloadData()
+            print("Updated")
         }
         catch {
             let nserror = error as NSError
@@ -65,11 +69,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            guard let selectedButton = sender as? UIButton else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            
-            guard let selectedListCell = selectedButton.superview?.superview as? ListTableViewCell else {
+            guard let selectedListCell = sender as? ListTableViewCell else {
                 fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
@@ -134,8 +134,10 @@ class MainViewController: UIViewController, UITableViewDataSource {
         
     }
     
-    @IBAction func update(_ sender: UIBarButtonItem) {
+    @objc func updateListsTableView(_ sender: Any) {
         updateListTable()
+        listsRefreshControl.endRefreshing()
+        print("Refreshed")
     }
     
 }

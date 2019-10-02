@@ -70,8 +70,8 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
         
         let isPresentingInAddListMode = presentingViewController is UINavigationController
         
-        if isPresentingInAddListMode {
-            dismiss(animated: true, completion: nil)
+        if isPresentingInAddListMode{
+            presentingViewController?.dismiss(animated: true, completion: nil)
         }
         else if let owningNavigationController = navigationController {
             owningNavigationController.popViewController(animated: true)

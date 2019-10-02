@@ -15,6 +15,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var taskTable: UITableView!
     
     private var tasks = [Task]()
+    private let tasksRefreshControl = UIRefreshControl()
     weak var list: List?
     
     override func viewDidLoad() {
@@ -22,9 +23,11 @@ class ListViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         taskTable.dataSource = self
         
+        taskTable.refreshControl = tasksRefreshControl
+        tasksRefreshControl.addTarget(self, action: #selector(refreshTaskTableView(_:)), for: .valueChanged)
+        
         if let list = list {
             navigationItem.title = list.name
-            TaskViewController.currentList = list
         }
         updateTasksTable()
         
@@ -36,9 +39,6 @@ class ListViewController: UIViewController, UITableViewDataSource {
         updateTasksTable()
     }
     
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
@@ -49,11 +49,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            guard let selectedButton = sender as? UIButton else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            
-            guard let selectedTaskCell = selectedButton.superview?.superview as? TaskTableViewCell else {
+            guard let selectedTaskCell = sender as? TaskTableViewCell else {
                 fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
@@ -63,7 +59,13 @@ class ListViewController: UIViewController, UITableViewDataSource {
             
             let selectedTask = tasks[indexPath.row]
             taskDetailViewController.currentTask = selectedTask //отправляю NSManagedObject в TaskVC
+            taskDetailViewController.currentList = list
             
+        case "AddTask":
+            guard let taskDetailViewController = segue.destination.contents as? TaskViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            taskDetailViewController.currentList = list
         default:
             print("Unknown segue: \(String(describing: segue.identifier))")
         }
@@ -86,11 +88,18 @@ class ListViewController: UIViewController, UITableViewDataSource {
             
             tasks = tempTasks
             taskTable.reloadData()
+            print("Updated")
         }
         catch {
             fatalError("Can't get tasks.")
         }
         
+    }
+    
+    @objc private func refreshTaskTableView(_ sender: Any) {
+        updateTasksTable()
+        tasksRefreshControl.endRefreshing()
+        print("Refreshed")
     }
     
     func updateTaskTableWithDoneTask() {
@@ -215,4 +224,17 @@ class ListViewController: UIViewController, UITableViewDataSource {
     }
     
     
+}
+
+extension UIViewController {
+    // Property для получения ViewController, когда перед ViewController стоит NavigationController
+    var contents: UIViewController {
+        if let navcon = self as? UINavigationController {
+            // Если перед нами NavigationController, то возвращается ViewController, в который идет переход через NavigationController
+            return navcon.visibleViewController ?? self
+        } else {
+            // Если перед нами ViewController, то возвращается self
+            return self
+        }
+    }
 }
