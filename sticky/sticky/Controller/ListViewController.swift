@@ -26,13 +26,11 @@ class ListViewController: UIViewController, UITableViewDataSource {
         taskTable.refreshControl = tasksRefreshControl
         tasksRefreshControl.addTarget(self, action: #selector(refreshTaskTableView(_:)), for: .valueChanged)
         
-        if let list = list {
-            navigationItem.title = list.name
-        }
+        navigationItem.title = list?.name
+        
         updateTasksTable()
         
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -153,10 +151,6 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         return cell
 
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

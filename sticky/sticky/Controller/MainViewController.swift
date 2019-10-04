@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDataSource, UISplitViewControllerDelegate {
     
     @IBOutlet weak var listTable: UITableView!
     private var lists = [List]() //массив объектов NSManagedObject для отображения в TableView
@@ -23,8 +23,9 @@ class MainViewController: UIViewController, UITableViewDataSource {
         listsRefreshControl.addTarget(self, action: #selector(updateListsTableView(_:)), for: .valueChanged)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        splitViewController?.delegate = self
     }
     
     func updateListTable() {
@@ -43,13 +44,22 @@ class MainViewController: UIViewController, UITableViewDataSource {
         
     }
     
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        if let listVC = secondaryViewController.contents as? ListViewController {
+            if listVC.list == nil {
+                return true
+            }
+        }
+        return false
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
         
         switch (segue.identifier ?? "") {
         case "ShowTasks":
-            guard let listDetailViewController = segue.destination as? ListViewController else {
+            guard let listDetailViewController = segue.destination.contents as? ListViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
@@ -65,7 +75,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
             listDetailViewController.list = selectedList
             
         case "ShowListDetail":
-            guard let addListViewController = segue.destination as? AddListViewController else {
+            guard let addListViewController = segue.destination.contents as? AddListViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TTd-ry-QI9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mPd-c7-5kj">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -58,7 +58,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="listName" destination="SzW-5V-xfJ" id="F3W-i4-iap"/>
-                                            <segue destination="dsN-WA-08J" kind="show" identifier="ShowTasks" id="Ufe-KU-siO"/>
+                                            <segue destination="dgg-Ov-ScH" kind="showDetail" identifier="ShowTasks" id="Ufe-KU-siO"/>
                                             <segue destination="HOf-Ex-RF4" kind="show" identifier="ShowListDetail" trigger="accessoryAction" id="4nE-Bw-pa6"/>
                                         </connections>
                                     </tableViewCell>
@@ -111,7 +111,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ald-KN-NdU"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New List" id="Z6p-Us-2NG">
+                    <navigationItem key="navigationItem" title="New List" largeTitleDisplayMode="always" id="Z6p-Us-2NG">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sSy-ma-Qz3">
                             <connections>
                                 <action selector="cancel:" destination="HOf-Ex-RF4" id="N9q-Fu-ZUF"/>
@@ -222,7 +222,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DpQ-Qg-wnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97.5" y="1506.338028169014"/>
+            <point key="canvasLocation" x="744.79999999999995" y="1442.4287856071965"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="KuM-lc-XxL">
+            <objects>
+                <splitViewController id="mPd-c7-5kj" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="TTd-ry-QI9" kind="relationship" relationship="masterViewController" id="dAa-eu-vCu"/>
+                        <segue destination="dgg-Ov-ScH" kind="relationship" relationship="detailViewController" id="Tbk-TQ-nOa"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGr-3s-evO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1841" y="707"/>
         </scene>
         <!--New Task-->
         <scene sceneID="1bz-3b-tiT">
@@ -285,7 +298,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OqG-Yw-JdO"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Task" id="zsg-0p-Goz">
+                    <navigationItem key="navigationItem" title="New Task" largeTitleDisplayMode="always" id="zsg-0p-Goz">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tXy-Kg-IWm">
                             <connections>
                                 <action selector="cancel:" destination="4K4-AZ-icK" id="5Yz-Lk-bni"/>
@@ -305,11 +318,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FY-a4-t0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070" y="1494.7183098591547"/>
+            <point key="canvasLocation" x="2432.8000000000002" y="1397.4512743628186"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ARZ-wa-70d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dgg-Ov-ScH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YZL-RR-hYg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dsN-WA-08J" kind="relationship" relationship="rootViewController" id="j4k-gH-Bfm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZG-OL-bjk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-194.40000000000001" y="1442.4287856071965"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WKE-YW-LMw"/>
+        <segue reference="Tbk-TQ-nOa"/>
+        <segue reference="0Jt-xK-fJt"/>
         <segue reference="4nE-Bw-pa6"/>
     </inferredMetricsTieBreakers>
 </document>
