@@ -217,10 +217,31 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addTaskButton" destination="VA4-EA-NYT" id="LH8-vF-UHs"/>
+                        <outlet property="noListSelectedView" destination="xOo-fk-N9C" id="IG4-cZ-e3d"/>
                         <outlet property="taskTable" destination="Det-Jq-9BJ" id="lwk-MA-tlD"/>
+                        <outlet property="trashTasksButton" destination="Sal-aP-OIq" id="9cA-3y-Sd1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DpQ-Qg-wnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="xOo-fk-N9C">
+                    <rect key="frame" x="0.0" y="0.0" width="478" height="134"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No List Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2F-S8-puj">
+                            <rect key="frame" x="121" y="48.5" width="236" height="37.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                            <color key="textColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="E2F-S8-puj" firstAttribute="centerX" secondItem="xOo-fk-N9C" secondAttribute="centerX" id="ICY-zT-cZn"/>
+                        <constraint firstItem="E2F-S8-puj" firstAttribute="centerY" secondItem="xOo-fk-N9C" secondAttribute="centerY" id="wBm-xM-Slc"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="exx-MK-YCm"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="744.79999999999995" y="1442.4287856071965"/>
         </scene>
@@ -246,7 +267,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="6Ld-bm-3IU">
-                                <rect key="frame" x="16" y="128" width="343" height="290"/>
+                                <rect key="frame" x="16" y="76" width="343" height="290"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4gp-xE-Yd0">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
@@ -326,7 +347,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dgg-Ov-ScH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="YZL-RR-hYg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -340,8 +361,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ufe-KU-siO"/>
-        <segue reference="0Jt-xK-fJt"/>
+        <segue reference="Tbk-TQ-nOa"/>
+        <segue reference="WKE-YW-LMw"/>
         <segue reference="4nE-Bw-pa6"/>
     </inferredMetricsTieBreakers>
 </document>

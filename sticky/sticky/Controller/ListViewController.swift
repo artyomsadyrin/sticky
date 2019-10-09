@@ -17,6 +17,10 @@ class ListViewController: UIViewController, UITableViewDataSource {
     private var tasks = [Task]()
     private let tasksRefreshControl = UIRefreshControl()
     weak var list: List?
+    @IBOutlet weak var addTaskButton: UIBarButtonItem!
+    @IBOutlet weak var trashTasksButton: UIBarButtonItem!
+    
+    @IBOutlet weak var noListSelectedView: UIView!
     
     override func viewDidLoad() {
         
@@ -26,7 +30,14 @@ class ListViewController: UIViewController, UITableViewDataSource {
         taskTable.refreshControl = tasksRefreshControl
         tasksRefreshControl.addTarget(self, action: #selector(refreshTaskTableView(_:)), for: .valueChanged)
         
-        navigationItem.title = list?.name
+        if let list = list {
+            navigationItem.title = list.name
+        } else {
+            addTaskButton.isEnabled = false
+            trashTasksButton.isEnabled = false
+            taskTable.separatorStyle = .none
+            taskTable.backgroundView = noListSelectedView
+        }
         
         updateTasksTable()
         
