@@ -28,7 +28,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
         taskDate.isHidden = true
         
         if let task = currentTask {
-            navigationItem.title = "Details"
+            navigationItem.title = task.descriptionTask
             taskDescription.text = task.descriptionTask
             
             if let time = task.time {

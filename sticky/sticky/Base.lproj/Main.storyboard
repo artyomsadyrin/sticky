@@ -12,8 +12,8 @@
         <scene sceneID="ZaY-am-Bx6">
             <objects>
                 <navigationController id="TTd-ry-QI9" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9af-2l-07Q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9af-2l-07Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -74,7 +74,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sticky" id="A8s-Hy-vic">
+                    <navigationItem key="navigationItem" title="Sticky" largeTitleDisplayMode="always" id="A8s-Hy-vic">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vaB-xq-e7Y">
                             <connections>
                                 <segue destination="HOf-Ex-RF4" kind="show" identifier="AddList" id="RGw-75-b4g"/>
@@ -98,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter list name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-JZ-TNK">
-                                <rect key="frame" x="20" y="108" width="335" height="34"/>
+                                <rect key="frame" x="20" y="160" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
@@ -202,7 +202,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a9I-5r-pmq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Current List" id="67c-tu-YKG">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="67c-tu-YKG">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="VA4-EA-NYT">
                                 <connections>
@@ -246,7 +246,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="6Ld-bm-3IU">
-                                <rect key="frame" x="16" y="76" width="343" height="290"/>
+                                <rect key="frame" x="16" y="128" width="343" height="290"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4gp-xE-Yd0">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
@@ -325,8 +325,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dgg-Ov-ScH" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YZL-RR-hYg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="YZL-RR-hYg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -340,7 +340,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tbk-TQ-nOa"/>
+        <segue reference="Ufe-KU-siO"/>
         <segue reference="0Jt-xK-fJt"/>
         <segue reference="4nE-Bw-pa6"/>
     </inferredMetricsTieBreakers>
