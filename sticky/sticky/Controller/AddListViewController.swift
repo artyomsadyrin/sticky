@@ -11,7 +11,6 @@ import UIKit
 
 class AddListViewController: UIViewController, UITextFieldDelegate {
     
-    
     @IBOutlet weak var listNameTextField: UITextField!
     weak var currentList: List?
     
@@ -39,11 +38,9 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
         
         if isPresentingInAddListMode {
             dismiss(animated: true, completion: nil)
-        }
-        else if let owningNavigationController = navigationController {
+        } else if let owningNavigationController = navigationController {
             owningNavigationController.popViewController(animated: true)
-        }
-        else {
+        } else {
             fatalError("The AddListViewController is not inside a navigation controller.")
         }
         
@@ -61,8 +58,7 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
         if let currentList = currentList {
             currentList.name = listName
             PersistenceService.saveContext()
-        }
-        else {
+        } else {
             let list = List(context: PersistenceService.context)
             list.name = listName
             PersistenceService.saveContext()
@@ -70,13 +66,11 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
         
         let isPresentingInAddListMode = presentingViewController is UINavigationController
         
-        if isPresentingInAddListMode{
+        if isPresentingInAddListMode {
             presentingViewController?.dismiss(animated: true, completion: nil)
-        }
-        else if let owningNavigationController = navigationController {
+        } else if let owningNavigationController = navigationController {
             owningNavigationController.popViewController(animated: true)
-        }
-        else {
+        } else {
             fatalError("The AddListViewController is not inside a navigation controller.")
         }
         

@@ -16,15 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         UNUserNotificationCenter.current().delegate = self
 
-        
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        center.requestAuthorization(options: [.alert, .sound]) { (_, _) in
             // Enable or disable features based on authorization
         }
         
@@ -56,4 +54,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
 }
-

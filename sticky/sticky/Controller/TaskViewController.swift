@@ -14,7 +14,6 @@ import UserNotificationsUI
 
 class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
     
-    
     @IBOutlet weak var taskDescription: UITextField!
     @IBOutlet weak var taskDate: UIDatePicker!
     weak var currentList: List?
@@ -35,8 +34,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
                 switchRemindOnDayOutlet.isOn = true
                 taskDate.isHidden = false
                 taskDate.date = time as Date
-            }
-            else {
+            } else {
                 taskDate.isHidden = true
             }
         }
@@ -60,11 +58,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
         
         if isPresentingInAddTaskMode {
             dismiss(animated: true, completion: nil)
-        }
-        else if let owningNavigationController = navigationController {
+        } else if let owningNavigationController = navigationController {
             owningNavigationController.popViewController(animated: true)
-        }
-        else {
+        } else {
             fatalError("The TaskViewController is not inside a navigation controller.")
         }
         
@@ -74,14 +70,11 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
         
         if sender.isOn == true {
             taskDate.isHidden = false
-        }
-        else {
+        } else {
             taskDate.isHidden = true
         }
         
     }
-    
-    
     
     @IBAction func saveTask(_ sender: UIBarButtonItem) {
         
@@ -103,14 +96,12 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
                     currentTask.time = taskDate.date as NSDate
                     
                     buildNotification(taskName: taskName, taskDate: taskDate.date)
-                }
-                else {
+                } else {
                     currentTask.time = nil
                 }
                 
                 PersistenceService.saveContext()
-            }
-            else {
+            } else {
                 let task = Task(context: PersistenceService.context)
                 task.descriptionTask = taskName
                 task.isDone = false
@@ -130,11 +121,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UNUserNotificat
         
         if isPresentingInAddTaskMode {
             presentingViewController?.dismiss(animated: true, completion: nil)
-        }
-        else if let owningNavigationController = navigationController {
+        } else if let owningNavigationController = navigationController {
             owningNavigationController.popViewController(animated: true)
-        }
-        else {
+        } else {
             fatalError("The TaskViewController is not inside a navigation controller.")
         }
         

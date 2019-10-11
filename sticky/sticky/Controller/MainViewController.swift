@@ -36,8 +36,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UISplitViewCo
             self.lists = listsFetched
             self.listTable.reloadData()
             print("Updated")
-        }
-        catch {
+        } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
@@ -57,7 +56,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UISplitViewCo
         
         super.prepare(for: segue, sender: sender)
         
-        switch (segue.identifier ?? "") {
+        switch segue.identifier {
         case "ShowTasks":
             guard let listDetailViewController = segue.destination.contents as? ListViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
@@ -125,7 +124,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UISplitViewCo
         return lists.count
     }
     
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete { //реализую удаление листов через свайп влево
@@ -135,8 +133,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UISplitViewCo
             do {
                 try PersistenceService.context.save()
                 updateListTable()
-            }
-            catch {
+            } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
@@ -151,4 +148,3 @@ class MainViewController: UIViewController, UITableViewDataSource, UISplitViewCo
     }
     
 }
-

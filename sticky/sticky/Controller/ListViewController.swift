@@ -52,7 +52,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         super.prepare(for: segue, sender: sender)
         
-        switch (segue.identifier ?? "") {
+        switch segue.identifier {
         case "ShowTaskDetail":
             guard let taskDetailViewController = segue.destination as? TaskViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
@@ -98,8 +98,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
             tasks = tempTasks
             taskTable.reloadData()
             print("Updated")
-        }
-        catch {
+        } catch {
             fatalError("Can't get tasks.")
         }
         
@@ -127,13 +126,11 @@ class ListViewController: UIViewController, UITableViewDataSource {
             
             tasks = tempTasks
             taskTable.reloadData()
-        }
-        catch {
+        } catch {
             fatalError("Can't get tasks.")
         }
         
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -155,8 +152,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
             if taskDate < Date() { //проверяю истек ли срок выполнения таска
                 cell.taskDate.textColor = .red
             }
-        }
-        else {
+        } else {
             cell.taskDate.isHidden = true
         }
         
@@ -176,15 +172,13 @@ class ListViewController: UIViewController, UITableViewDataSource {
             
             if task.isDone == true {
                 updateTaskTableWithDoneTask()
-            }
-            else {
+            } else {
                 updateTasksTable()
             }
             
             do {
                 try PersistenceService.context.save()
-            }
-            catch {
+            } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
@@ -212,8 +206,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
             tasks.remove(at: index.row)
             taskTable.deleteRows(at: [index], with: .fade)
             
-        }
-        else {
+        } else {
             selectedTask.isDone = false
             PersistenceService.saveContext()
                         
@@ -223,11 +216,9 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
     }
     
-    
     @IBAction func getDoneTasks(_ sender: UIBarButtonItem) {
         updateTaskTableWithDoneTask()
     }
-    
     
 }
 
