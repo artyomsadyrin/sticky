@@ -57,12 +57,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B0A7E10203074D000DA437C /* Service */ = {
+		7B0A7E10203074D000DA437C /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				7B0A7E112030750600DA437C /* PersistenceService.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		7B1ADE24201C6BA80089BDB1 /* Controller */ = {
@@ -79,6 +79,7 @@
 		7B338F222017994F00456F13 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BB95C35200BB31C0014DF17 /* Main.storyboard */,
 				7B80A06A2014D76A000208C3 /* ListTableViewCell.swift */,
 				7B80A06E2014E581000208C3 /* TaskTableViewCell.swift */,
 			);
@@ -104,16 +105,11 @@
 		7BB95C30200BB31C0014DF17 /* sticky */ = {
 			isa = PBXGroup;
 			children = (
-				7B0A7E10203074D000DA437C /* Service */,
 				7BF5DD002020254F00DD9247 /* Model */,
 				7B338F222017994F00456F13 /* View */,
 				7B1ADE24201C6BA80089BDB1 /* Controller */,
-				7BB95C31200BB31C0014DF17 /* AppDelegate.swift */,
-				7BB95C35200BB31C0014DF17 /* Main.storyboard */,
-				7BB95C3B200BB31C0014DF17 /* Assets.xcassets */,
-				7BB95C3D200BB31C0014DF17 /* LaunchScreen.storyboard */,
-				7BB95C40200BB31C0014DF17 /* Info.plist */,
-				7BB95C38200BB31C0014DF17 /* sticky.xcdatamodeld */,
+				7B0A7E10203074D000DA437C /* Services */,
+				8E1477FF2355A9F900285E8B /* Supporting Files */,
 			);
 			path = sticky;
 			sourceTree = "<group>";
@@ -121,12 +117,24 @@
 		7BF5DD002020254F00DD9247 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7BB95C38200BB31C0014DF17 /* sticky.xcdatamodeld */,
 				7BF5DCF82020254500DD9247 /* List+CoreDataClass.swift */,
 				7BF5DCF92020254500DD9247 /* List+CoreDataProperties.swift */,
 				7BF5DCFA2020254500DD9247 /* Task+CoreDataClass.swift */,
 				7BF5DCFB2020254500DD9247 /* Task+CoreDataProperties.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8E1477FF2355A9F900285E8B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7BB95C31200BB31C0014DF17 /* AppDelegate.swift */,
+				7BB95C3B200BB31C0014DF17 /* Assets.xcassets */,
+				7BB95C3D200BB31C0014DF17 /* LaunchScreen.storyboard */,
+				7BB95C40200BB31C0014DF17 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,7 +386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LSCB2ZP9M;
-				INFOPLIST_FILE = sticky/Info.plist;
+				INFOPLIST_FILE = "sticky/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.artyomsadyrin.sticky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -393,7 +401,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LSCB2ZP9M;
-				INFOPLIST_FILE = sticky/Info.plist;
+				INFOPLIST_FILE = "sticky/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.artyomsadyrin.sticky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
